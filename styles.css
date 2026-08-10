@@ -1,0 +1,329 @@
+/* ============================================================
+   Azul Marino · Posada · Estilos
+   Paleta: azul marino + arena + crema, acento dorado y verde mar
+   ============================================================ */
+
+:root {
+  --navy:       #12314e;
+  --navy-deep:  #0b2136;
+  --sea:        #3f7d8c;
+  --gold:       #c2a15b;
+  --sand:       #e7dcc7;
+  --cream:      #faf7f0;
+  --ink:        #1c2b36;
+  --muted:      #5b6b76;
+  --line:       #e4ddd0;
+  --white:      #ffffff;
+  --wa:         #25d366;
+
+  --serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --sans:  'Jost', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --radius: 14px;
+  --shadow: 0 18px 40px -20px rgba(11, 33, 54, .35);
+  --container: 1180px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 84px; }
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  background: var(--cream);
+  line-height: 1.6;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+
+.container { width: 100%; max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+
+h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.12; color: var(--navy); }
+h2 { font-size: clamp(1.9rem, 3.6vw, 3rem); }
+h3 { font-size: 1.5rem; }
+
+.section { padding: 88px 0; }
+.section.alt { background: var(--white); }
+.center { text-align: center; }
+
+.eyebrow {
+  font-size: .78rem; letter-spacing: .22em; text-transform: uppercase;
+  color: var(--gold); font-weight: 500; margin-bottom: 12px;
+}
+.eyebrow.center { display: block; }
+.section-lead { max-width: 620px; margin: 14px auto 0; color: var(--muted); font-size: 1.1rem; }
+
+/* -------- Placeholders de fotos -------- */
+.ph {
+  position: relative;
+  background:
+    linear-gradient(135deg, rgba(63,125,140,.18), rgba(18,49,78,.28)),
+    repeating-linear-gradient(45deg, var(--sand) 0 14px, #dfd3bd 14px 28px);
+}
+.ph::after {
+  content: attr(data-ph);
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 16px;
+  font-family: var(--sans); font-size: .8rem; letter-spacing: .12em;
+  text-transform: uppercase; color: var(--navy-deep);
+  background: rgba(250,247,240,.35);
+}
+
+/* -------- Botones -------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  font-family: var(--sans); font-weight: 500; font-size: .92rem;
+  letter-spacing: .04em; padding: 13px 26px; border-radius: 999px;
+  border: 1px solid transparent; cursor: pointer; transition: all .22s ease;
+  white-space: nowrap;
+}
+.btn-primary { background: var(--navy); color: var(--white); }
+.btn-primary:hover { background: var(--navy-deep); transform: translateY(-2px); }
+.btn-outline { background: transparent; color: var(--navy); border-color: var(--navy); }
+.btn-outline:hover { background: var(--navy); color: var(--white); }
+.btn-whatsapp { background: var(--wa); color: #063; color: #06371c; }
+.btn-whatsapp:hover { background: #1fb855; transform: translateY(-2px); }
+.btn-lg { padding: 16px 34px; font-size: 1rem; }
+.btn-block { width: 100%; }
+.btn-nav { padding: 9px 20px; background: var(--gold); color: var(--navy-deep); }
+.btn-nav:hover { background: #b08f45; }
+
+/* ============ HEADER ============ */
+.site-header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  transition: background .3s ease, box-shadow .3s ease;
+}
+.site-header.scrolled { background: rgba(250,247,240,.96); box-shadow: 0 6px 24px -14px rgba(11,33,54,.4); backdrop-filter: blur(8px); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 74px; }
+
+.logo { display: flex; flex-direction: column; line-height: 1.05; }
+.logo-mark { font-family: var(--serif); font-size: 1.55rem; font-weight: 600; color: var(--white); letter-spacing: .02em; }
+.logo-sub { font-size: .64rem; letter-spacing: .28em; text-transform: uppercase; color: var(--sand); }
+.scrolled .logo-mark { color: var(--navy); }
+.scrolled .logo-sub { color: var(--gold); }
+
+.main-nav { display: flex; align-items: center; gap: 30px; }
+.main-nav a { color: var(--white); font-size: .95rem; letter-spacing: .03em; transition: color .2s; }
+.main-nav a:hover { color: var(--gold); }
+.scrolled .main-nav a { color: var(--navy); }
+.scrolled .main-nav a:hover { color: var(--gold); }
+.main-nav a.btn-nav { color: var(--navy-deep); }
+.scrolled .main-nav a.btn-nav { color: var(--navy-deep); }
+
+.header-right { display: flex; align-items: center; gap: 16px; }
+.lang-switch { display: flex; gap: 2px; border: 1px solid rgba(255,255,255,.4); border-radius: 999px; overflow: hidden; }
+.scrolled .lang-switch { border-color: var(--line); }
+.lang-switch button {
+  background: transparent; border: none; cursor: pointer; padding: 6px 11px;
+  font-family: var(--sans); font-size: .78rem; font-weight: 500; letter-spacing: .06em;
+  color: var(--white); transition: all .2s;
+}
+.scrolled .lang-switch button { color: var(--navy); }
+.lang-switch button.active { background: var(--gold); color: var(--navy-deep); }
+
+.menu-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+.menu-toggle span { width: 26px; height: 2px; background: var(--white); transition: .3s; }
+.scrolled .menu-toggle span { background: var(--navy); }
+
+/* ============ HERO ============ */
+.hero { position: relative; min-height: 100vh; display: flex; align-items: center; color: var(--white); overflow: hidden; }
+.hero-media {
+  position: absolute; inset: 0;
+  background:
+    linear-gradient(rgba(11,33,54,.35), rgba(11,33,54,.55)),
+    linear-gradient(135deg, #1b4763, #0b2136);
+  background-size: cover; background-position: center;
+}
+.hero-media.ph::after { background: rgba(11,33,54,.25); color: var(--sand); }
+.hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(11,33,54,.25), rgba(11,33,54,.55)); pointer-events: none; }
+.hero-content { position: relative; z-index: 2; max-width: 760px; padding-top: 40px; padding-bottom: 120px; }
+.hero-eyebrow { font-size: .85rem; letter-spacing: .3em; text-transform: uppercase; color: var(--sand); margin-bottom: 18px; }
+.hero-title { font-size: clamp(2.6rem, 6vw, 4.6rem); color: var(--white); margin-bottom: 18px; }
+.hero-text { font-size: clamp(1.05rem, 2vw, 1.35rem); max-width: 560px; margin-bottom: 32px; font-weight: 300; color: #eef2f4; }
+
+/* Barra de reserva rápida */
+.quickbook {
+  position: absolute; z-index: 3; left: 50%; transform: translateX(-50%);
+  bottom: 34px; width: calc(100% - 48px); max-width: var(--container);
+  background: rgba(250,247,240,.97); border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 18px; display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 14px; align-items: end;
+}
+.qb-field { display: flex; flex-direction: column; gap: 6px; }
+.qb-field label { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.qb-field input, .qb-field select {
+  font-family: var(--sans); font-size: .95rem; padding: 11px 12px;
+  border: 1px solid var(--line); border-radius: 8px; background: var(--white); color: var(--ink);
+}
+
+/* ============ INTRO ============ */
+.intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.intro-text h2 { margin-bottom: 20px; }
+.intro-text p { color: var(--muted); font-size: 1.08rem; margin-bottom: 16px; }
+.intro-media { border-radius: var(--radius); min-height: 420px; box-shadow: var(--shadow); }
+
+/* ============ REASONS ============ */
+.reasons-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 34px; margin-top: 48px; }
+.reason { text-align: center; padding: 20px; }
+.reason-icon { font-size: 2.4rem; margin-bottom: 16px; }
+.reason h3 { margin-bottom: 10px; }
+.reason p { color: var(--muted); }
+
+/* ============ ROOMS ============ */
+.rooms-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 48px; }
+.room-card {
+  background: var(--white); border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--shadow); display: flex; flex-direction: column;
+  transition: transform .25s ease; border: 1px solid var(--line);
+}
+.room-card:hover { transform: translateY(-6px); }
+.room-card.featured { border-color: var(--gold); }
+.room-media { height: 240px; }
+.room-body { padding: 26px; display: flex; flex-direction: column; flex: 1; position: relative; }
+.room-tag {
+  position: absolute; top: -14px; left: 26px; background: var(--gold); color: var(--navy-deep);
+  font-size: .68rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 600;
+  padding: 5px 12px; border-radius: 999px;
+}
+.room-body h3 { margin-bottom: 10px; }
+.room-body > p { color: var(--muted); margin-bottom: 18px; }
+.room-amenities { list-style: none; margin-bottom: 22px; }
+.room-amenities li { padding: 6px 0; border-bottom: 1px solid var(--line); font-size: .92rem; color: var(--ink); }
+.room-amenities li::before { content: '·'; color: var(--gold); margin-right: 10px; font-weight: 700; }
+.room-book { margin-top: auto; }
+
+/* ============ SERVICES ============ */
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+.service {
+  display: flex; align-items: center; gap: 16px; background: var(--cream);
+  padding: 20px 22px; border-radius: var(--radius); border: 1px solid var(--line);
+}
+.service-ic { font-size: 1.6rem; flex-shrink: 0; }
+.service span:last-child { font-size: .98rem; }
+
+/* ============ GALLERY ============ */
+.gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-auto-rows: 220px; gap: 16px; margin-top: 48px; }
+.gal-item { border-radius: var(--radius); overflow: hidden; }
+.gal-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+
+/* ============ BOOK ============ */
+.book-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+.book-intro h2 { margin-bottom: 18px; }
+.book-intro > p { color: var(--muted); font-size: 1.08rem; margin-bottom: 24px; }
+.book-points { list-style: none; }
+.book-points li { padding: 8px 0; color: var(--navy); font-weight: 400; }
+.book-form { background: var(--cream); padding: 32px; border-radius: var(--radius); box-shadow: var(--shadow); border: 1px solid var(--line); }
+.alt .book-form { background: var(--white); }
+.field { display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; }
+.field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.field label { font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.field input, .field select, .field textarea {
+  font-family: var(--sans); font-size: .98rem; padding: 12px 14px;
+  border: 1px solid var(--line); border-radius: 8px; background: var(--white); color: var(--ink);
+  width: 100%; resize: vertical;
+}
+.field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--sea); box-shadow: 0 0 0 3px rgba(63,125,140,.15); }
+
+/* ============ CONTACT ============ */
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: stretch; }
+.contact-info h2 { margin-bottom: 26px; }
+.contact-list { list-style: none; }
+.contact-list li { display: flex; gap: 16px; padding: 16px 0; border-bottom: 1px solid var(--line); }
+.c-ic { font-size: 1.4rem; }
+.contact-list strong { display: block; font-weight: 500; color: var(--navy); margin-bottom: 2px; }
+.contact-list a:hover { color: var(--sea); }
+.contact-map { min-height: 380px; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.contact-map iframe { width: 100%; height: 100%; min-height: 380px; }
+
+/* ============ FOOTER ============ */
+.site-footer { background: var(--navy-deep); color: #cdd7de; padding-top: 56px; }
+.footer-inner { display: flex; justify-content: space-between; gap: 30px; flex-wrap: wrap; padding-bottom: 40px; }
+.footer-brand .logo-mark { color: var(--white); }
+.footer-brand p { margin-top: 8px; color: #9fb0bc; max-width: 280px; }
+.footer-links { display: flex; gap: 26px; flex-wrap: wrap; align-items: center; }
+.footer-links a { color: #cdd7de; font-size: .95rem; }
+.footer-links a:hover { color: var(--gold); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.1); padding: 20px 0; font-size: .85rem; color: #899aa6; }
+
+/* ============ WhatsApp float ============ */
+.whatsapp-float {
+  position: fixed; right: 22px; bottom: 22px; z-index: 90;
+  width: 56px; height: 56px; border-radius: 50%; background: var(--wa); color: var(--white);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 10px 26px -8px rgba(37,211,102,.7); transition: transform .2s;
+}
+.whatsapp-float:hover { transform: scale(1.08); }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 900px) {
+  .intro-grid, .book-grid, .contact-grid { grid-template-columns: 1fr; gap: 36px; }
+  .reasons-grid, .rooms-grid, .services-grid { grid-template-columns: 1fr; }
+  .gallery-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 180px; }
+  .gal-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+  .quickbook { grid-template-columns: 1fr 1fr; position: static; transform: none; width: 100%; margin-top: -70px; }
+
+  .main-nav {
+    position: fixed; top: 74px; right: 0; width: 260px; height: calc(100vh - 74px);
+    background: var(--navy-deep); flex-direction: column; align-items: flex-start;
+    padding: 30px 26px; gap: 22px; transform: translateX(100%); transition: transform .3s ease;
+  }
+  .main-nav.open { transform: translateX(0); }
+  .main-nav a { color: var(--white) !important; font-size: 1.1rem; }
+  .menu-toggle { display: flex; }
+  .site-header.scrolled .menu-toggle span,
+  .menu-toggle span { background: var(--white); }
+  .scrolled .menu-toggle span { background: var(--navy); }
+}
+
+@media (max-width: 520px) {
+  .section { padding: 60px 0; }
+  .quickbook { grid-template-columns: 1fr; }
+  .field-row { grid-template-columns: 1fr; }
+  .hero-content { padding-bottom: 40px; }
+}
+
+/* ============================================================
+   >>> FOTOS DE LA POSADA <<<
+   ------------------------------------------------------------
+   PASO 1) Guardá tus fotos dentro de la carpeta "assets" con
+           EXACTAMENTE estos nombres (en minúscula, sin espacios):
+
+             hero.jpg              -> foto grande de portada
+             exterior.jpg          -> foto de ambiente / exterior
+             habitacion-jardin.jpg -> Doble Jardín
+             habitacion-superior.jpg -> Doble Superior
+             habitacion-jacuzzi.jpg  -> Doble Superior + Jacuzzi
+             galeria-1.jpg ... galeria-6.jpg -> las 6 de la galería
+
+   PASO 2) Borrá la línea de abajo que dice   ACTIVAR-FOTOS-INICIO
+           (la que tiene  ⟨slash⟩*  ) y la de  ACTIVAR-FOTOS-FIN.
+           Con eso las fotos aparecen y desaparecen los recuadros grises.
+
+   (Podés usar .jpg, .png o .webp; si cambiás la extensión, cambiala
+    también acá abajo.)
+   ============================================================ */
+
+/* ACTIVAR-FOTOS-INICIO */ /*
+.ph::after { content: none !important; }
+.ph { background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; }
+
+.hero-media {
+  background-image:
+    linear-gradient(rgba(11,33,54,.35), rgba(11,33,54,.55)),
+    url('assets/hero.jpg') !important;
+}
+.intro-media { background-image: url('assets/exterior.jpg') !important; }
+.ph-room1 { background-image: url('assets/habitacion-jardin.jpg') !important; }
+.ph-room2 { background-image: url('assets/habitacion-superior.jpg') !important; }
+.ph-room3 { background-image: url('assets/habitacion-jacuzzi.jpg') !important; }
+.ph-gal1 { background-image: url('assets/galeria-1.jpg') !important; }
+.ph-gal2 { background-image: url('assets/galeria-2.jpg') !important; }
+.ph-gal3 { background-image: url('assets/galeria-3.jpg') !important; }
+.ph-gal4 { background-image: url('assets/galeria-4.jpg') !important; }
+.ph-gal5 { background-image: url('assets/galeria-5.jpg') !important; }
+.ph-gal6 { background-image: url('assets/galeria-6.jpg') !important; }
+*/ /* ACTIVAR-FOTOS-FIN */

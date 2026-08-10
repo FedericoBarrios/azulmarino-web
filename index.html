@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Azul Marino · Posada Boutique · José Ignacio, Uruguay</title>
+  <meta name="description" content="Azul Marino, posada boutique en José Ignacio. 12 suites exclusivas donde el campo, la arena y el mar se encuentran. A 400 m de la playa." />
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ============ HEADER / NAVEGACIÓN ============ -->
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#inicio" class="logo">
+        <span class="logo-mark">Azul Marino</span>
+        <span class="logo-sub" data-i18n="logo_sub">Posada · José Ignacio</span>
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="#habitaciones" data-i18n="nav_rooms">Habitaciones</a>
+        <a href="#servicios" data-i18n="nav_services">Servicios</a>
+        <a href="#galeria" data-i18n="nav_gallery">Galería</a>
+        <a href="#contacto" data-i18n="nav_contact">Contacto</a>
+        <a href="#reservar" class="btn btn-nav" data-i18n="nav_book">Reservar</a>
+      </nav>
+
+      <div class="header-right">
+        <div class="lang-switch" role="group" aria-label="Idioma">
+          <button data-lang="es" class="active">ES</button>
+          <button data-lang="en">EN</button>
+          <button data-lang="pt">PT</button>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="inicio">
+    <div class="hero-media ph" data-ph="Foto principal / panorámica de la posada">
+      <!-- Para poner tu foto: reemplazá el fondo de .hero-media en styles.css
+           por  background-image: url('assets/hero.jpg');  y quitá la clase "ph" de arriba -->
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <p class="hero-eyebrow" data-i18n="hero_eyebrow">José Ignacio · Uruguay</p>
+      <h1 class="hero-title" data-i18n="hero_title">Donde el campo, la arena y el mar se encuentran</h1>
+      <p class="hero-text" data-i18n="hero_text">12 suites exclusivas en una zona natural única, a 400 metros de la playa.</p>
+      <a href="#reservar" class="btn btn-primary btn-lg" data-i18n="hero_cta">Consultar disponibilidad</a>
+    </div>
+
+    <!-- Barra de reserva rápida -->
+    <div class="quickbook container">
+      <div class="qb-field">
+        <label data-i18n="qb_checkin">Llegada</label>
+        <input type="date" id="qbCheckin" />
+      </div>
+      <div class="qb-field">
+        <label data-i18n="qb_checkout">Salida</label>
+        <input type="date" id="qbCheckout" />
+      </div>
+      <div class="qb-field">
+        <label data-i18n="qb_guests">Huéspedes</label>
+        <select id="qbGuests">
+          <option value="1">1</option>
+          <option value="2" selected>2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </div>
+      <button class="btn btn-primary" id="qbSubmit" data-i18n="qb_submit">Consultar</button>
+    </div>
+  </section>
+
+  <!-- ============ INTRO / SOBRE LA POSADA ============ -->
+  <section class="intro section" id="posada">
+    <div class="container intro-grid">
+      <div class="intro-text">
+        <p class="eyebrow" data-i18n="intro_eyebrow">Nuestra posada</p>
+        <h2 data-i18n="intro_title">Un refugio natural, operado por sus propietarios</h2>
+        <p data-i18n="intro_p1">Azul Marino nació como pionera en la zona: un lugar donde el campo, la arena y el mar conviven en calma. Cada suite tiene acceso independiente y terraza exclusiva, pensada para tu privacidad.</p>
+        <p data-i18n="intro_p2">Estamos a 400 metros de la playa, a 2 km del pueblo de José Ignacio y a 5 km de la laguna Garzón. Un punto perfecto para descansar y explorar.</p>
+      </div>
+      <div class="intro-media ph" data-ph="Foto ambiente / exterior"></div>
+    </div>
+  </section>
+
+  <!-- ============ POR QUÉ ELEGIRNOS ============ -->
+  <section class="reasons section alt">
+    <div class="container">
+      <p class="eyebrow center" data-i18n="reasons_eyebrow">Por qué Azul Marino</p>
+      <h2 class="center" data-i18n="reasons_title">Tres razones para quedarte</h2>
+      <div class="reasons-grid">
+        <div class="reason">
+          <div class="reason-icon">🔑</div>
+          <h3 data-i18n="reason1_t">Comodidad con privacidad</h3>
+          <p data-i18n="reason1_p">Suites independientes con terraza propia. Tu espacio, sin interrupciones.</p>
+        </div>
+        <div class="reason">
+          <div class="reason-icon">🌿</div>
+          <h3 data-i18n="reason2_t">Paz y naturaleza</h3>
+          <p data-i18n="reason2_p">Pioneros en la zona, rodeados de campo, arena y mar en total tranquilidad.</p>
+        </div>
+        <div class="reason">
+          <div class="reason-icon">✨</div>
+          <h3 data-i18n="reason3_t">Servicio personalizado</h3>
+          <p data-i18n="reason3_p">Operada por sus dueños, con atención a todos los detalles de tu estadía.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HABITACIONES ============ -->
+  <section class="rooms section" id="habitaciones">
+    <div class="container">
+      <p class="eyebrow center" data-i18n="rooms_eyebrow">Alojamiento</p>
+      <h2 class="center" data-i18n="rooms_title">Nuestras suites</h2>
+      <p class="section-lead center" data-i18n="rooms_lead">Todas incluyen desayuno, servicio de limpieza y ropa blanca. Acceso independiente y terraza exclusiva.</p>
+
+      <div class="rooms-grid">
+        <!-- Doble Jardín -->
+        <article class="room-card">
+          <div class="room-media ph ph-room1" data-ph="Foto: Doble Jardín"></div>
+          <div class="room-body">
+            <h3 data-i18n="room1_t">Doble Jardín</h3>
+            <p data-i18n="room1_p">Suite acogedora con vista y acceso al jardín. Ideal para una escapada tranquila.</p>
+            <ul class="room-amenities">
+              <li data-i18n="am_breakfast">Desayuno incluido</li>
+              <li data-i18n="am_terrace">Terraza exclusiva</li>
+              <li data-i18n="am_wifi">WiFi gratis</li>
+            </ul>
+            <button class="btn btn-outline room-book" data-room="Doble Jardín" data-i18n="room_book">Reservar esta suite</button>
+          </div>
+        </article>
+
+        <!-- Doble Superior -->
+        <article class="room-card featured">
+          <div class="room-media ph ph-room2" data-ph="Foto: Doble Superior"></div>
+          <div class="room-body">
+            <span class="room-tag" data-i18n="room_popular">Más elegida</span>
+            <h3 data-i18n="room2_t">Doble Superior</h3>
+            <p data-i18n="room2_p">Más espacio y confort, con terraza privada y una ambientación luminosa.</p>
+            <ul class="room-amenities">
+              <li data-i18n="am_breakfast">Desayuno incluido</li>
+              <li data-i18n="am_terrace">Terraza exclusiva</li>
+              <li data-i18n="am_space">Mayor espacio</li>
+            </ul>
+            <button class="btn btn-primary room-book" data-room="Doble Superior" data-i18n="room_book">Reservar esta suite</button>
+          </div>
+        </article>
+
+        <!-- Doble Superior + Jacuzzi -->
+        <article class="room-card">
+          <div class="room-media ph ph-room3" data-ph="Foto: Doble Superior + Jacuzzi"></div>
+          <div class="room-body">
+            <h3 data-i18n="room3_t">Doble Superior + Jacuzzi</h3>
+            <p data-i18n="room3_p">Nuestra suite más completa, con jacuzzi privado para una experiencia especial.</p>
+            <ul class="room-amenities">
+              <li data-i18n="am_breakfast">Desayuno incluido</li>
+              <li data-i18n="am_jacuzzi">Jacuzzi privado</li>
+              <li data-i18n="am_terrace">Terraza exclusiva</li>
+            </ul>
+            <button class="btn btn-outline room-book" data-room="Doble Superior + Jacuzzi" data-i18n="room_book">Reservar esta suite</button>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICIOS ============ -->
+  <section class="services section alt" id="servicios">
+    <div class="container">
+      <p class="eyebrow center" data-i18n="services_eyebrow">Todo incluido</p>
+      <h2 class="center" data-i18n="services_title">Servicios de la posada</h2>
+      <div class="services-grid">
+        <div class="service"><span class="service-ic">🥐</span><span data-i18n="srv_breakfast">Desayuno continental diario, con opciones sin gluten</span></div>
+        <div class="service"><span class="service-ic">🏊</span><span data-i18n="srv_pool">Piscina climatizada exterior</span></div>
+        <div class="service"><span class="service-ic">🚲</span><span data-i18n="srv_bikes">Bicicletas a disposición</span></div>
+        <div class="service"><span class="service-ic">📶</span><span data-i18n="srv_wifi">WiFi gratuito</span></div>
+        <div class="service"><span class="service-ic">🅿️</span><span data-i18n="srv_parking">Estacionamiento</span></div>
+        <div class="service"><span class="service-ic">⛱️</span><span data-i18n="srv_beach">Sillas de playa y sombrillas</span></div>
+        <div class="service"><span class="service-ic">🧺</span><span data-i18n="srv_towels">Servicio de toallas</span></div>
+        <div class="service"><span class="service-ic">🔥</span><span data-i18n="srv_lounge">Salón con bar, living y estufa de leña</span></div>
+        <div class="service"><span class="service-ic">🗺️</span><span data-i18n="srv_advice">Asesoramiento de restaurantes y actividades</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GALERÍA ============ -->
+  <section class="gallery section" id="galeria">
+    <div class="container">
+      <p class="eyebrow center" data-i18n="gallery_eyebrow">Galería</p>
+      <h2 class="center" data-i18n="gallery_title">Un vistazo a Azul Marino</h2>
+      <div class="gallery-grid">
+        <div class="gal-item ph ph-gal1" data-ph="Foto 1"></div>
+        <div class="gal-item ph ph-gal2" data-ph="Foto 2"></div>
+        <div class="gal-item ph ph-gal3" data-ph="Foto 3"></div>
+        <div class="gal-item ph ph-gal4" data-ph="Foto 4"></div>
+        <div class="gal-item ph ph-gal5" data-ph="Foto 5"></div>
+        <div class="gal-item ph ph-gal6" data-ph="Foto 6"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RESERVAR ============ -->
+  <section class="book section alt" id="reservar">
+    <div class="container book-grid">
+      <div class="book-intro">
+        <p class="eyebrow" data-i18n="book_eyebrow">Reservá tu estadía</p>
+        <h2 data-i18n="book_title">Confirmá tu reserva por WhatsApp</h2>
+        <p data-i18n="book_text">Completá el formulario y te llevamos directo a WhatsApp con tu pedido ya escrito. Te confirmamos disponibilidad y el mejor precio a la brevedad.</p>
+        <ul class="book-points">
+          <li data-i18n="book_p1">✓ Confirmación directa con los propietarios</li>
+          <li data-i18n="book_p2">✓ Mejor precio garantizado</li>
+          <li data-i18n="book_p3">✓ Sin cargos ni pagos online</li>
+        </ul>
+      </div>
+
+      <form class="book-form" id="bookForm">
+        <div class="field">
+          <label for="bfName" data-i18n="f_name">Nombre y apellido</label>
+          <input type="text" id="bfName" required />
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="bfCheckin" data-i18n="qb_checkin">Llegada</label>
+            <input type="date" id="bfCheckin" required />
+          </div>
+          <div class="field">
+            <label for="bfCheckout" data-i18n="qb_checkout">Salida</label>
+            <input type="date" id="bfCheckout" required />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="bfGuests" data-i18n="qb_guests">Huéspedes</label>
+            <select id="bfGuests">
+              <option value="1">1</option>
+              <option value="2" selected>2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="bfRoom" data-i18n="f_room">Habitación</label>
+            <select id="bfRoom">
+              <option data-i18n="f_room_any" value="Sin preferencia">Sin preferencia</option>
+              <option value="Doble Jardín">Doble Jardín</option>
+              <option value="Doble Superior">Doble Superior</option>
+              <option value="Doble Superior + Jacuzzi">Doble Superior + Jacuzzi</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="bfMsg" data-i18n="f_msg">Comentarios (opcional)</label>
+          <textarea id="bfMsg" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-whatsapp btn-lg btn-block">
+          <span data-i18n="f_submit">Enviar por WhatsApp</span>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO / UBICACIÓN ============ -->
+  <section class="contact section" id="contacto">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <p class="eyebrow" data-i18n="contact_eyebrow">Contacto</p>
+        <h2 data-i18n="contact_title">Estamos para ayudarte</h2>
+        <ul class="contact-list">
+          <li>
+            <span class="c-ic">📍</span>
+            <div>
+              <strong data-i18n="contact_addr_t">Dirección</strong>
+              <span>Calle La Farola, Ruta 10 km 185<br />José Ignacio, Maldonado, Uruguay</span>
+            </div>
+          </li>
+          <li>
+            <span class="c-ic">💬</span>
+            <div>
+              <strong>WhatsApp</strong>
+              <a href="https://wa.me/59898949309" target="_blank" rel="noopener">+598 98 94 93 09</a>
+            </div>
+          </li>
+          <li>
+            <span class="c-ic">📞</span>
+            <div>
+              <strong data-i18n="contact_phone_t">Teléfono</strong>
+              <a href="tel:+59844862363">+598 44 86 23 63</a>
+            </div>
+          </li>
+          <li>
+            <span class="c-ic">✉️</span>
+            <div>
+              <strong>Email</strong>
+              <a href="mailto:posada@azulmarino.com.uy">posada@azulmarino.com.uy</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="contact-map">
+        <iframe
+          title="Mapa Azul Marino"
+          src="https://www.google.com/maps?q=Ruta+10+km+185+Jos%C3%A9+Ignacio+Uruguay&output=embed"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-mark">Azul Marino</span>
+        <p data-i18n="footer_tag">Posada boutique en José Ignacio, Uruguay.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#habitaciones" data-i18n="nav_rooms">Habitaciones</a>
+        <a href="#servicios" data-i18n="nav_services">Servicios</a>
+        <a href="#reservar" data-i18n="nav_book">Reservar</a>
+        <a href="#contacto" data-i18n="nav_contact">Contacto</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© <span id="year"></span> Azul Marino · José Ignacio</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botón flotante de WhatsApp -->
+  <a href="https://wa.me/59898949309" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.9L4 29l8.3-1.6c1.7.9 3.7 1.4 5.7 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-4.9 1 1-4.8-.2-.4c-1-1.6-1.5-3.4-1.5-5.3C5 9.5 9.9 4.6 16 4.6S27 9.5 27 15.6 22.1 24.8 16 24.8zm6-8.2c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.2s-.8 1.1-1 1.3c-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.3-.2-.3 0-.5.1-.7.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>

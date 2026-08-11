@@ -49,6 +49,12 @@ const I18N = {
     room_popular: "Más elegida", room_book: "Reservar esta suite",
     am_breakfast: "Desayuno incluido", am_terrace: "Terraza exclusiva", am_wifi: "WiFi gratis",
     am_space: "Mayor espacio", am_jacuzzi: "Jacuzzi privado",
+    am_cleaning: "Servicio de limpieza", am_linens: "Ropa blanca incluida", am_access: "Acceso independiente",
+    room_view: "Ver habitación", room_amen_title: "Servicios de la suite",
+    back_home: "← Volver al inicio", room_photos: "Fotos de la suite",
+    room1_long: "Una suite luminosa con acceso directo al jardín y terraza propia, pensada para desconectar. Cama doble confortable, baño privado y todos los detalles para una estadía tranquila a pocos metros de la playa.",
+    room2_long: "Nuestra suite de mayor espacio y confort, con terraza privada y una ambientación luminosa y serena. Ideal para quienes buscan un plus de comodidad sin resignar la privacidad que caracteriza a Azul Marino.",
+    room3_long: "La experiencia más completa: una suite amplia con jacuzzi privado para relajarte después de un día de playa. Terraza exclusiva, acceso independiente y la atención personalizada de la posada.",
 
     services_eyebrow: "Todo incluido",
     services_title: "Servicios de la posada",
@@ -125,6 +131,12 @@ const I18N = {
     room_popular: "Most popular", room_book: "Book this suite",
     am_breakfast: "Breakfast included", am_terrace: "Private terrace", am_wifi: "Free WiFi",
     am_space: "More space", am_jacuzzi: "Private jacuzzi",
+    am_cleaning: "Housekeeping", am_linens: "Linens included", am_access: "Private entrance",
+    room_view: "View room", room_amen_title: "Suite amenities",
+    back_home: "← Back to home", room_photos: "Suite photos",
+    room1_long: "A bright suite with direct garden access and its own terrace, made for switching off. Comfortable double bed, private bathroom and every detail for a peaceful stay just steps from the beach.",
+    room2_long: "Our most spacious and comfortable suite, with a private terrace and a bright, serene atmosphere. Ideal for those seeking extra comfort without giving up the privacy that defines Azul Marino.",
+    room3_long: "The most complete experience: a spacious suite with a private jacuzzi to unwind after a day at the beach. Exclusive terrace, private entrance and the inn's personalised service.",
 
     services_eyebrow: "All included",
     services_title: "Inn services",
@@ -200,6 +212,12 @@ const I18N = {
     room_popular: "Mais escolhida", room_book: "Reservar esta suíte",
     am_breakfast: "Café da manhã incluído", am_terrace: "Terraço exclusivo", am_wifi: "WiFi grátis",
     am_space: "Mais espaço", am_jacuzzi: "Jacuzzi privativo",
+    am_cleaning: "Serviço de limpeza", am_linens: "Roupa de cama incluída", am_access: "Entrada independente",
+    room_view: "Ver quarto", room_amen_title: "Comodidades da suíte",
+    back_home: "← Voltar ao início", room_photos: "Fotos da suíte",
+    room1_long: "Uma suíte luminosa com acesso direto ao jardim e terraço próprio, pensada para desconectar. Cama de casal confortável, banheiro privativo e todos os detalhes para uma estadia tranquila a poucos metros da praia.",
+    room2_long: "Nossa suíte com mais espaço e conforto, com terraço privativo e um ambiente luminoso e sereno. Ideal para quem busca um conforto extra sem abrir mão da privacidade que caracteriza a Azul Marino.",
+    room3_long: "A experiência mais completa: uma suíte ampla com jacuzzi privativo para relaxar depois de um dia de praia. Terraço exclusivo, entrada independente e o atendimento personalizado da pousada.",
 
     services_eyebrow: "Tudo incluído",
     services_title: "Serviços da pousada",
@@ -238,6 +256,27 @@ const I18N = {
   },
 };
 
+/* ---------- CONFIGURACIÓN DE HABITACIONES ----------
+   images: nombres de archivo dentro de assets/habitaciones/<folder>/
+   (dejá el array vacío [] y se muestran placeholders hasta cargar fotos) */
+const ROOMS = {
+  "doble-jardin": {
+    key: "room1", folder: "doble-jardin",
+    amenities: ["am_breakfast", "am_terrace", "am_access", "am_wifi", "am_cleaning", "am_linens"],
+    images: [],
+  },
+  "doble-superior": {
+    key: "room2", folder: "doble-superior",
+    amenities: ["am_breakfast", "am_terrace", "am_space", "am_wifi", "am_cleaning", "am_linens"],
+    images: [],
+  },
+  "doble-superior-jacuzzi": {
+    key: "room3", folder: "doble-superior-jacuzzi",
+    amenities: ["am_breakfast", "am_jacuzzi", "am_terrace", "am_wifi", "am_cleaning", "am_access"],
+    images: [],
+  },
+};
+
 let currentLang = "es";
 
 /* ---------- Aplicar idioma ---------- */
@@ -257,6 +296,9 @@ function applyLang(lang) {
   });
 
   try { localStorage.setItem("azulmarino_lang", lang); } catch (e) {}
+
+  // Si estamos en una página de habitación, re-renderizar su contenido dinámico
+  if (typeof window.__renderRoom === "function") window.__renderRoom();
 }
 
 function t(key) { return (I18N[currentLang] && I18N[currentLang][key]) || I18N.es[key] || key; }
@@ -290,15 +332,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Header con scroll
   const header = document.getElementById("header");
-  const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 40);
-  onScroll();
-  window.addEventListener("scroll", onScroll);
+  if (header) {
+    const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll);
+  }
 
   // Menú móvil
   const toggle = document.getElementById("menuToggle");
   const nav = document.getElementById("mainNav");
-  toggle.addEventListener("click", () => nav.classList.toggle("open"));
-  nav.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => nav.classList.remove("open")));
+  if (toggle && nav) {
+    toggle.addEventListener("click", () => nav.classList.toggle("open"));
+    nav.querySelectorAll("a").forEach((a) => a.addEventListener("click", () => nav.classList.remove("open")));
+  }
 
   // Año en footer
   const yearEl = document.getElementById("year");
@@ -309,15 +355,18 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll('input[type="date"]').forEach((i) => i.setAttribute("min", today));
 
   // Barra rápida -> pasa datos al formulario y baja a reservar
-  document.getElementById("qbSubmit").addEventListener("click", () => {
-    const ci = document.getElementById("qbCheckin").value;
-    const co = document.getElementById("qbCheckout").value;
-    const g  = document.getElementById("qbGuests").value;
-    if (ci) document.getElementById("bfCheckin").value = ci;
-    if (co) document.getElementById("bfCheckout").value = co;
-    document.getElementById("bfGuests").value = g;
-    document.getElementById("reservar").scrollIntoView({ behavior: "smooth" });
-  });
+  const qbSubmit = document.getElementById("qbSubmit");
+  if (qbSubmit) {
+    qbSubmit.addEventListener("click", () => {
+      const ci = document.getElementById("qbCheckin").value;
+      const co = document.getElementById("qbCheckout").value;
+      const g  = document.getElementById("qbGuests").value;
+      if (ci) document.getElementById("bfCheckin").value = ci;
+      if (co) document.getElementById("bfCheckout").value = co;
+      document.getElementById("bfGuests").value = g;
+      document.getElementById("reservar").scrollIntoView({ behavior: "smooth" });
+    });
+  }
 
   // Botones "Reservar esta suite" -> preseleccionan habitación
   document.querySelectorAll(".room-book").forEach((btn) => {
@@ -325,24 +374,154 @@ document.addEventListener("DOMContentLoaded", () => {
       const room = btn.getAttribute("data-room");
       const sel = document.getElementById("bfRoom");
       if (sel) sel.value = room;
-      document.getElementById("reservar").scrollIntoView({ behavior: "smooth" });
+      const target = document.getElementById("reservar");
+      if (target) target.scrollIntoView({ behavior: "smooth" });
     });
   });
+
+  // Miniatura de cada tarjeta de habitación (home) = primera foto de su carpeta
+  document.querySelectorAll(".rooms-grid .room-media").forEach((el) => {
+    const q = (el.getAttribute("href") || "").split("?")[1] || "";
+    const slug = new URLSearchParams(q).get("room");
+    const room = ROOMS[slug];
+    if (room && room.images.length) {
+      el.style.backgroundImage = `url('assets/habitaciones/${room.folder}/${room.images[0]}')`;
+      el.style.backgroundSize = "cover";
+      el.style.backgroundPosition = "center";
+      el.classList.remove("ph");
+    }
+  });
+
+  // Preseleccionar habitación si llega ?room=slug (desde la página de la suite)
+  const roomParam = new URLSearchParams(location.search).get("room");
+  if (roomParam && ROOMS[roomParam]) {
+    const sel = document.getElementById("bfRoom");
+    const name = I18N.es[ROOMS[roomParam].key + "_t"]; // el value del <option> está en español
+    if (sel && name) sel.value = name;
+  }
 
   // Envío del formulario -> WhatsApp
-  document.getElementById("bookForm").addEventListener("submit", (e) => {
-    e.preventDefault();
-    const checkin  = document.getElementById("bfCheckin").value;
-    const checkout = document.getElementById("bfCheckout").value;
-    if (!checkin || !checkout) { alert(t("alert_dates")); return; }
+  const bookForm = document.getElementById("bookForm");
+  if (bookForm) {
+    bookForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const checkin  = document.getElementById("bfCheckin").value;
+      const checkout = document.getElementById("bfCheckout").value;
+      if (!checkin || !checkout) { alert(t("alert_dates")); return; }
 
-    openWhatsApp({
-      name:     document.getElementById("bfName").value.trim(),
-      checkin,
-      checkout,
-      guests:   document.getElementById("bfGuests").value,
-      room:     document.getElementById("bfRoom").value,
-      comments: document.getElementById("bfMsg").value.trim(),
+      openWhatsApp({
+        name:     document.getElementById("bfName").value.trim(),
+        checkin,
+        checkout,
+        guests:   document.getElementById("bfGuests").value,
+        room:     document.getElementById("bfRoom").value,
+        comments: document.getElementById("bfMsg").value.trim(),
+      });
     });
-  });
+  }
+
+  // Página de habitación (habitacion.html)
+  initRoomPage();
 });
+
+/* ============================================================
+   PÁGINA DE HABITACIÓN (habitacion.html?room=slug)
+   ============================================================ */
+function initRoomPage() {
+  const page = document.getElementById("roomPage");
+  if (!page) return;
+
+  const slug = new URLSearchParams(location.search).get("room");
+  const room = ROOMS[slug];
+
+  if (!room) { location.href = "index.html#habitaciones"; return; }
+
+  const imgPath = (file) => `assets/habitaciones/${room.folder}/${file}`;
+  let activeIdx = 0;
+
+  // Render que se re-ejecuta al cambiar idioma
+  window.__renderRoom = function () {
+    const name = t(room.key + "_t");
+    document.title = name + " · Azul Marino";
+
+    const titleEl = document.getElementById("rpTitle");
+    const descEl  = document.getElementById("rpDesc");
+    if (titleEl) titleEl.textContent = name;
+    if (descEl)  descEl.textContent = t(room.key + "_long");
+
+    // Amenities
+    const amenEl = document.getElementById("rpAmenities");
+    if (amenEl) {
+      amenEl.innerHTML = "";
+      room.amenities.forEach((k) => {
+        const li = document.createElement("li");
+        li.textContent = t(k);
+        amenEl.appendChild(li);
+      });
+    }
+
+    // Botón reservar -> vuelve a la home con la habitación preseleccionada
+    const bookBtn = document.getElementById("rpBook");
+    if (bookBtn) {
+      bookBtn.textContent = t("room_book");
+      bookBtn.setAttribute("href", `index.html?room=${slug}#reservar`);
+    }
+  };
+
+  // Galería (se arma una sola vez; las imágenes no dependen del idioma)
+  const mainWrap = document.getElementById("rpMain");
+  const thumbsEl = document.getElementById("rpThumbs");
+
+  function setMain(idx) {
+    activeIdx = (idx + room.images.length) % room.images.length;
+    mainWrap.innerHTML = "";
+    const img = document.createElement("img");
+    img.src = imgPath(room.images[activeIdx]);
+    img.alt = t(room.key + "_t");
+    img.addEventListener("click", () => openLightbox(activeIdx));
+    mainWrap.appendChild(img);
+    thumbsEl.querySelectorAll("button").forEach((b, i) =>
+      b.classList.toggle("active", i === activeIdx));
+  }
+
+  if (room.images.length > 0) {
+    // Miniaturas
+    room.images.forEach((file, i) => {
+      const b = document.createElement("button");
+      const im = document.createElement("img");
+      im.src = imgPath(file);
+      im.alt = "";
+      b.appendChild(im);
+      b.addEventListener("click", () => setMain(i));
+      thumbsEl.appendChild(b);
+    });
+    // Flechas
+    const prev = document.getElementById("rpPrev");
+    const next = document.getElementById("rpNext");
+    if (prev) prev.addEventListener("click", () => setMain(activeIdx - 1));
+    if (next) next.addEventListener("click", () => setMain(activeIdx + 1));
+    setMain(0);
+  } else {
+    // Sin fotos aún -> placeholder
+    mainWrap.classList.add("ph");
+    mainWrap.setAttribute("data-ph", "Fotos próximamente");
+  }
+
+  // Lightbox
+  const lb = document.getElementById("lightbox");
+  const lbImg = document.getElementById("lbImg");
+  function openLightbox(idx) {
+    if (!lb) return;
+    lbImg.src = imgPath(room.images[idx]);
+    lb.classList.add("open");
+  }
+  if (lb) {
+    lb.addEventListener("click", (e) => {
+      if (e.target.id === "lbNext") { setMain(activeIdx + 1); lbImg.src = imgPath(room.images[activeIdx]); return; }
+      if (e.target.id === "lbPrev") { setMain(activeIdx - 1); lbImg.src = imgPath(room.images[activeIdx]); return; }
+      lb.classList.remove("open");
+    });
+  }
+
+  window.__renderRoom();
+}

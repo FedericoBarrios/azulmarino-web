@@ -36,25 +36,44 @@ Para frenarlo, apretá `Ctrl + C` en la terminal.
 
 ## 2) Poner tus fotos  ⭐ (lo más importante)
 
-1. Guardá tus fotos dentro de la carpeta **`assets`** con estos nombres EXACTOS:
+Hay **dos tipos** de fotos: las de cada habitación y las generales del sitio.
 
-   | Nombre del archivo          | Dónde aparece                    |
-   |-----------------------------|----------------------------------|
-   | `hero.jpg`                  | Foto grande de portada           |
-   | `exterior.jpg`              | Foto de ambiente / exterior      |
-   | `habitacion-jardin.jpg`     | Doble Jardín                     |
-   | `habitacion-superior.jpg`   | Doble Superior                   |
-   | `habitacion-jacuzzi.jpg`    | Doble Superior + Jacuzzi         |
-   | `galeria-1.jpg` a `galeria-6.jpg` | Las 6 fotos de la galería  |
+### A) Fotos de cada habitación (las más importantes)
 
-2. Abrí `styles.css`, andá **al final del archivo** y borrá SOLO estas dos líneas:
-   - la que dice `/* ACTIVAR-FOTOS-INICIO */ /*`
-   - la que dice `*/ /* ACTIVAR-FOTOS-FIN */`
+Poné todas las fotos de cada suite dentro de su carpeta:
 
-   Al borrarlas, las fotos aparecen y los recuadros grises desaparecen solos.
+```
+assets/habitaciones/doble-jardin/            <- fotos de Doble Jardín
+assets/habitaciones/doble-superior/          <- fotos de Doble Superior
+assets/habitaciones/doble-superior-jacuzzi/  <- fotos de Doble Superior + Jacuzzi
+```
 
-> Podés usar `.jpg`, `.png` o `.webp`. Si usás otra extensión, cambiala también
-> en esas líneas del `styles.css`.
+Podés poner **las fotos que quieras** en cada carpeta (con cualquier nombre).
+La **primera** aparece como portada de la habitación en la home, y **todas** se
+ven en la galería de la página de esa suite.
+
+> Después de copiar las fotos, avisame y yo las conecto (es un renglón por suite
+> en `script.js`). Si preferís hacerlo vos: en `script.js`, en `const ROOMS`,
+> completá el array `images: []` con los nombres de archivo, por ejemplo:
+> `images: ["frente.jpg", "bano.jpg", "terraza.jpg"]`.
+
+### B) Fotos generales del sitio (portada, ambiente y galería)
+
+Guardalas en la carpeta **`assets`** con estos nombres EXACTOS:
+
+| Nombre del archivo                | Dónde aparece               |
+|-----------------------------------|-----------------------------|
+| `hero.jpg`                        | Foto grande de portada      |
+| `exterior.jpg`                    | Foto de ambiente / exterior |
+| `galeria-1.jpg` a `galeria-6.jpg` | Las 6 fotos de la galería   |
+
+Después abrí `styles.css`, andá **al final del archivo** y borrá SOLO estas dos líneas:
+- la que dice `/* ACTIVAR-FOTOS-INICIO */ /*`
+- la que dice `*/ /* ACTIVAR-FOTOS-FIN */`
+
+Al borrarlas, esas fotos aparecen y los recuadros grises desaparecen solos.
+
+> Podés usar `.jpg`, `.png` o `.webp`.
 
 ---
 

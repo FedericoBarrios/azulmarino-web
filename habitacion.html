@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Habitación · Azul Marino</title>
+  <meta name="description" content="Suites de Azul Marino, posada boutique en José Ignacio." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="subpage">
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header scrolled" id="header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <span class="logo-mark">Azul Marino</span>
+        <span class="logo-sub" data-i18n="logo_sub">Posada · José Ignacio</span>
+      </a>
+      <nav class="main-nav" id="mainNav">
+        <a href="index.html#habitaciones" data-i18n="nav_rooms">Habitaciones</a>
+        <a href="index.html#servicios" data-i18n="nav_services">Servicios</a>
+        <a href="index.html#galeria" data-i18n="nav_gallery">Galería</a>
+        <a href="index.html#contacto" data-i18n="nav_contact">Contacto</a>
+        <a href="index.html#reservar" class="btn btn-nav" data-i18n="nav_book">Reservar</a>
+      </nav>
+      <div class="header-right">
+        <div class="lang-switch" role="group" aria-label="Idioma">
+          <button data-lang="es" class="active">ES</button>
+          <button data-lang="en">EN</button>
+          <button data-lang="pt">PT</button>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HABITACIÓN ============ -->
+  <main class="section room-page" id="roomPage">
+    <div class="container">
+      <a href="index.html#habitaciones" class="back-link" data-i18n="back_home">← Volver al inicio</a>
+
+      <div class="room-detail">
+        <!-- Galería -->
+        <div class="rp-gallery">
+          <div class="rp-main-wrap">
+            <div class="rp-main" id="rpMain"></div>
+            <button class="rp-arrow rp-prev" id="rpPrev" aria-label="Anterior">‹</button>
+            <button class="rp-arrow rp-next" id="rpNext" aria-label="Siguiente">›</button>
+          </div>
+          <div class="rp-thumbs" id="rpThumbs"></div>
+        </div>
+
+        <!-- Info -->
+        <div class="rp-info">
+          <p class="eyebrow" data-i18n="rooms_eyebrow">Alojamiento</p>
+          <h1 id="rpTitle">Habitación</h1>
+          <p class="rp-desc" id="rpDesc"></p>
+
+          <h3 class="rp-amen-title" data-i18n="room_amen_title">Servicios de la suite</h3>
+          <ul class="rp-amenities" id="rpAmenities"></ul>
+
+          <a href="index.html#reservar" class="btn btn-whatsapp btn-lg" id="rpBook" data-i18n="room_book">Reservar esta suite</a>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lb-arrow lb-prev" id="lbPrev" aria-label="Anterior">‹</button>
+    <img id="lbImg" src="" alt="" />
+    <button class="lb-arrow lb-next" id="lbNext" aria-label="Siguiente">›</button>
+    <span class="lb-close">×</span>
+  </div>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-mark">Azul Marino</span>
+        <p data-i18n="footer_tag">Posada boutique en José Ignacio, Uruguay.</p>
+      </div>
+      <div class="footer-links">
+        <a href="index.html#habitaciones" data-i18n="nav_rooms">Habitaciones</a>
+        <a href="index.html#servicios" data-i18n="nav_services">Servicios</a>
+        <a href="index.html#reservar" data-i18n="nav_book">Reservar</a>
+        <a href="index.html#contacto" data-i18n="nav_contact">Contacto</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container"><span>© <span id="year"></span> Azul Marino · José Ignacio</span></div>
+    </div>
+  </footer>
+
+  <a href="https://wa.me/59898949309" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.9L4 29l8.3-1.6c1.7.9 3.7 1.4 5.7 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-4.9 1 1-4.8-.2-.4c-1-1.6-1.5-3.4-1.5-5.3C5 9.5 9.9 4.6 16 4.6S27 9.5 27 15.6 22.1 24.8 16 24.8zm6-8.2c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.2s-.8 1.1-1 1.3c-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.3-.2-.3 0-.5.1-.7.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+  </a>
+
+  <script src="script.js"></script>
+</body>
+</html>

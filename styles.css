@@ -358,7 +358,7 @@ h3 { font-size: 1.5rem; }
     también acá abajo.)
    ============================================================ */
 
-/* ACTIVAR-FOTOS-INICIO */ /*
+/* FOTOS ACTIVADAS (para volver a los recuadros grises, comentá este bloque) */
 .ph::after { content: none !important; }
 .ph { background-size: cover !important; background-position: center !important; background-repeat: no-repeat !important; }
 
@@ -374,4 +374,4 @@ h3 { font-size: 1.5rem; }
 .ph-gal4 { background-image: url('assets/galeria-4.jpg') !important; }
 .ph-gal5 { background-image: url('assets/galeria-5.jpg') !important; }
 .ph-gal6 { background-image: url('assets/galeria-6.jpg') !important; }
-*/ /* ACTIVAR-FOTOS-FIN */
+/* FIN FOTOS */

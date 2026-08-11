@@ -17,3 +17,4 @@ npm-debug.log*
 
 # Respaldo local de fotos originales (pesado, no subir al repo)
 assets/_originales/
+assets/inicio/

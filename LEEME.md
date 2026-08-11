@@ -86,6 +86,21 @@ Al borrarlas, esas fotos aparecen y los recuadros grises desaparecen solos.
 
 ---
 
+## 3-bis) Precios, temporadas y meses cerrados  💲
+
+Todo esto se edita en **un solo archivo: `config.js`** (no hace falta saber programar,
+solo cambiar números y textos entre comillas):
+
+- **Precios por noche (USD)** de cada habitación, dentro de cada temporada
+  (`precios: { "doble-jardin": 150, ... }`). Ahora hay **precios de EJEMPLO** — reemplazalos por los reales.
+- **Temporadas**: fechas (`desde`/`hasta`) y el texto de **política de cancelación** en los 3 idiomas.
+- **Meses cerrados**: `mesesCerrados: [5, 6, 7]` = junio, julio y agosto (0=enero … 11=diciembre).
+- **Mínimo de noches**: `minNoches` (por ahora desactivado en `null`).
+
+Al elegir fechas en el formulario de reserva, el sitio calcula y muestra el **precio en USD**
+de la estadía, y bloquea las fechas de los meses cerrados. La página **Tarifas y Políticas**
+(`politicas.html`) se arma sola con lo que pongas en `config.js`.
+
 ## 4) Cambiar el número de WhatsApp / datos de contacto
 
 - **Número de WhatsApp:** en `script.js`, primera línea útil:

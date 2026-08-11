@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Habitación · Azul Marino</title>
-  <meta name="description" content="Suites de Azul Marino, posada boutique en José Ignacio." />
+  <title>Tarifas y Políticas · Azul Marino</title>
+  <meta name="description" content="Temporadas, precios y políticas de cancelación de Azul Marino, posada en José Ignacio." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -40,44 +40,32 @@
     </div>
   </header>
 
-  <!-- ============ HABITACIÓN ============ -->
-  <main class="section room-page" id="roomPage">
-    <div class="container">
-      <a href="index.html#habitaciones" class="back-link" data-i18n="back_home">← Volver al inicio</a>
+  <!-- ============ TARIFAS Y POLÍTICAS ============ -->
+  <main class="section policies-page" id="policiesPage">
+    <div class="container container-narrow">
+      <a href="index.html" class="back-link" data-i18n="back_home">← Volver al inicio</a>
 
-      <div class="room-detail">
-        <!-- Galería -->
-        <div class="rp-gallery">
-          <div class="rp-main-wrap">
-            <div class="rp-main" id="rpMain"></div>
-            <button class="rp-arrow rp-prev" id="rpPrev" aria-label="Anterior">‹</button>
-            <button class="rp-arrow rp-next" id="rpNext" aria-label="Siguiente">›</button>
-          </div>
-          <div class="rp-thumbs" id="rpThumbs"></div>
-        </div>
+      <p class="eyebrow" data-i18n="pol_title">Tarifas y Políticas</p>
+      <h1 data-i18n="pol_title">Tarifas y Políticas</h1>
+      <p class="section-lead-left" data-i18n="pol_intro">Toda la información sobre temporadas, precios y cancelaciones de Azul Marino.</p>
 
-        <!-- Info -->
-        <div class="rp-info">
-          <p class="eyebrow" data-i18n="rooms_eyebrow">Alojamiento</p>
-          <h1 id="rpTitle">Habitación</h1>
-          <p class="rp-desc" id="rpDesc"></p>
+      <div class="pol-block">
+        <h2 data-i18n="pol_price_title">Precios</h2>
+        <p data-i18n="pol_price_text">El precio de tu estadía se calcula automáticamente al elegir las fechas en el formulario de reserva. La reserva se confirma por WhatsApp con los propietarios.</p>
+        <a href="index.html#reservar" class="btn btn-primary" data-i18n="nav_book">Reservar</a>
+      </div>
 
-          <h3 class="rp-amen-title" data-i18n="room_amen_title">Servicios de la suite</h3>
-          <ul class="rp-amenities" id="rpAmenities"></ul>
+      <div class="pol-block">
+        <h2 data-i18n="pol_closed_title">Temporada de cierre</h2>
+        <p data-i18n="pol_closed_text">La posada permanece cerrada durante junio, julio y agosto.</p>
+      </div>
 
-          <a href="index.html#reservar" class="btn btn-whatsapp btn-lg" id="rpBook" data-i18n="room_book">Reservar esta suite</a>
-        </div>
+      <div class="pol-block">
+        <h2 data-i18n="pol_seasons_title">Temporadas y cancelación</h2>
+        <div class="pol-seasons" id="polSeasons"></div>
       </div>
     </div>
   </main>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <button class="lb-arrow lb-prev" id="lbPrev" aria-label="Anterior">‹</button>
-    <img id="lbImg" src="" alt="" />
-    <button class="lb-arrow lb-next" id="lbNext" aria-label="Siguiente">›</button>
-    <span class="lb-close">×</span>
-  </div>
 
   <!-- ============ FOOTER ============ -->
   <footer class="site-footer">

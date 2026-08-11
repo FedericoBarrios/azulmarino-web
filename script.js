@@ -52,6 +52,21 @@ const I18N = {
     am_cleaning: "Servicio de limpieza", am_linens: "Ropa blanca incluida", am_access: "Acceso independiente",
     room_view: "Ver habitación", room_amen_title: "Servicios de la suite",
     back_home: "← Volver al inicio", room_photos: "Fotos de la suite",
+    nav_rates: "Tarifas y políticas",
+    price_estimate: "Precio estimado",
+    price_invalid: "La salida debe ser posterior a la llegada.",
+    price_closed: "La posada está cerrada en junio, julio y agosto.",
+    price_pick_room: "Elegí una habitación para ver el precio.",
+    price_consult: "Consultanos el precio para estas fechas.",
+    night: "noche", nights: "noches",
+    pol_title: "Tarifas y Políticas",
+    pol_intro: "Toda la información sobre temporadas, precios y cancelaciones de Azul Marino.",
+    pol_price_title: "Precios",
+    pol_price_text: "El precio de tu estadía se calcula automáticamente al elegir las fechas en el formulario de reserva. La reserva se confirma por WhatsApp con los propietarios.",
+    pol_seasons_title: "Temporadas y cancelación",
+    pol_closed_title: "Temporada de cierre",
+    pol_closed_text: "La posada permanece cerrada durante junio, julio y agosto.",
+    pol_dates: "Fechas", pol_cancel: "Cancelación",
     room1_long: "Una suite luminosa con acceso directo al jardín y terraza propia, pensada para desconectar. Cama doble confortable, baño privado y todos los detalles para una estadía tranquila a pocos metros de la playa.",
     room2_long: "Nuestra suite de mayor espacio y confort, con terraza privada y una ambientación luminosa y serena. Ideal para quienes buscan un plus de comodidad sin resignar la privacidad que caracteriza a Azul Marino.",
     room3_long: "La experiencia más completa: una suite amplia con jacuzzi privado para relajarte después de un día de playa. Terraza exclusiva, acceso independiente y la atención personalizada de la posada.",
@@ -134,6 +149,21 @@ const I18N = {
     am_cleaning: "Housekeeping", am_linens: "Linens included", am_access: "Private entrance",
     room_view: "View room", room_amen_title: "Suite amenities",
     back_home: "← Back to home", room_photos: "Suite photos",
+    nav_rates: "Rates & policies",
+    price_estimate: "Estimated price",
+    price_invalid: "Check-out must be after check-in.",
+    price_closed: "The inn is closed in June, July and August.",
+    price_pick_room: "Choose a room to see the price.",
+    price_consult: "Ask us the price for these dates.",
+    night: "night", nights: "nights",
+    pol_title: "Rates & Policies",
+    pol_intro: "Everything about Azul Marino's seasons, prices and cancellations.",
+    pol_price_title: "Prices",
+    pol_price_text: "Your stay's price is calculated automatically when you pick the dates in the booking form. The booking is confirmed via WhatsApp with the owners.",
+    pol_seasons_title: "Seasons & cancellation",
+    pol_closed_title: "Closing season",
+    pol_closed_text: "The inn remains closed during June, July and August.",
+    pol_dates: "Dates", pol_cancel: "Cancellation",
     room1_long: "A bright suite with direct garden access and its own terrace, made for switching off. Comfortable double bed, private bathroom and every detail for a peaceful stay just steps from the beach.",
     room2_long: "Our most spacious and comfortable suite, with a private terrace and a bright, serene atmosphere. Ideal for those seeking extra comfort without giving up the privacy that defines Azul Marino.",
     room3_long: "The most complete experience: a spacious suite with a private jacuzzi to unwind after a day at the beach. Exclusive terrace, private entrance and the inn's personalised service.",
@@ -215,6 +245,21 @@ const I18N = {
     am_cleaning: "Serviço de limpeza", am_linens: "Roupa de cama incluída", am_access: "Entrada independente",
     room_view: "Ver quarto", room_amen_title: "Comodidades da suíte",
     back_home: "← Voltar ao início", room_photos: "Fotos da suíte",
+    nav_rates: "Tarifas e políticas",
+    price_estimate: "Preço estimado",
+    price_invalid: "A saída deve ser posterior à chegada.",
+    price_closed: "A pousada está fechada em junho, julho e agosto.",
+    price_pick_room: "Escolha um quarto para ver o preço.",
+    price_consult: "Consulte o preço para estas datas.",
+    night: "noite", nights: "noites",
+    pol_title: "Tarifas e Políticas",
+    pol_intro: "Tudo sobre temporadas, preços e cancelamentos da Azul Marino.",
+    pol_price_title: "Preços",
+    pol_price_text: "O preço da sua estadia é calculado automaticamente ao escolher as datas no formulário de reserva. A reserva é confirmada pelo WhatsApp com os proprietários.",
+    pol_seasons_title: "Temporadas e cancelamento",
+    pol_closed_title: "Temporada de fechamento",
+    pol_closed_text: "A pousada permanece fechada durante junho, julho e agosto.",
+    pol_dates: "Datas", pol_cancel: "Cancelamento",
     room1_long: "Uma suíte luminosa com acesso direto ao jardim e terraço próprio, pensada para desconectar. Cama de casal confortável, banheiro privativo e todos os detalhes para uma estadia tranquila a poucos metros da praia.",
     room2_long: "Nossa suíte com mais espaço e conforto, com terraço privativo e um ambiente luminoso e sereno. Ideal para quem busca um conforto extra sem abrir mão da privacidade que caracteriza a Azul Marino.",
     room3_long: "A experiência mais completa: uma suíte ampla com jacuzzi privativo para relaxar depois de um dia de praia. Terraço exclusivo, entrada independente e o atendimento personalizado da pousada.",
@@ -297,24 +342,95 @@ function applyLang(lang) {
 
   try { localStorage.setItem("azulmarino_lang", lang); } catch (e) {}
 
-  // Si estamos en una página de habitación, re-renderizar su contenido dinámico
+  // Re-renderizar contenido dinámico según la página
   if (typeof window.__renderRoom === "function") window.__renderRoom();
+  if (typeof window.__renderPolicies === "function") window.__renderPolicies();
+  if (typeof updatePrice === "function") updatePrice();
 }
 
 function t(key) { return (I18N[currentLang] && I18N[currentLang][key]) || I18N.es[key] || key; }
 
 /* ---------- Construir y abrir WhatsApp ---------- */
-function openWhatsApp({ name, checkin, checkout, guests, room, comments }) {
+function openWhatsApp({ name, checkin, checkout, guests, room, comments, price }) {
   const lines = [t("wa_greeting"), ""];
   if (name)     lines.push(`${t("wa_name")}: ${name}`);
   lines.push(`${t("wa_checkin")}: ${checkin}`);
   lines.push(`${t("wa_checkout")}: ${checkout}`);
   lines.push(`${t("wa_guests")}: ${guests}`);
   if (room)     lines.push(`${t("wa_room")}: ${room}`);
+  if (price)    lines.push(`${t("price_estimate")}: ${price}`);
   if (comments) lines.push(`${t("wa_comments")}: ${comments}`);
 
   const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`;
   window.open(url, "_blank");
+}
+
+/* ============================================================
+   PRECIOS Y TEMPORADAS (leen de config.js -> CONFIG)
+   ============================================================ */
+function _md(s) { const [m, d] = s.split("-").map(Number); return m * 100 + d; }
+
+function seasonForDate(date) {
+  const md = (date.getMonth() + 1) * 100 + date.getDate();
+  for (const s of CONFIG.temporadas) {
+    const f = _md(s.desde), t = _md(s.hasta);
+    if (f <= t) { if (md >= f && md <= t) return s; }
+    else { if (md >= f || md <= t) return s; }   // temporada que cruza fin de año
+  }
+  return null;
+}
+function isClosedDate(date) { return CONFIG.mesesCerrados.includes(date.getMonth()); }
+function parseDateInput(str) { const [y, m, d] = str.split("-").map(Number); return new Date(y, m - 1, d); }
+
+// slug de habitación a partir del nombre en español (value del <select>)
+function slugForRoomName(name) {
+  for (const slug in ROOMS) { if (I18N.es[ROOMS[slug].key + "_t"] === name) return slug; }
+  return null;
+}
+
+// Calcula noches y total de una estadía
+function priceForStay(roomSlug, ciStr, coStr) {
+  const res = { nights: 0, total: 0, unknown: false, closed: false, invalid: false };
+  if (!ciStr || !coStr) { res.invalid = true; return res; }
+  const ci = parseDateInput(ciStr), co = parseDateInput(coStr);
+  if (!(co > ci)) { res.invalid = true; return res; }
+  const d = new Date(ci);
+  while (d < co) {
+    res.nights++;
+    if (isClosedDate(d)) { res.closed = true; }
+    else {
+      const s = seasonForDate(d);
+      const price = s && s.precios ? s.precios[roomSlug] : null;
+      if (price == null) res.unknown = true; else res.total += price;
+    }
+    d.setDate(d.getDate() + 1);
+  }
+  return res;
+}
+
+// Actualiza el cartel de precio en el formulario de reserva
+function updatePrice() {
+  const el = document.getElementById("bfPrice");
+  if (!el) return;
+  const ci = document.getElementById("bfCheckin").value;
+  const co = document.getElementById("bfCheckout").value;
+  const roomName = document.getElementById("bfRoom").value;
+  const slug = slugForRoomName(roomName);
+
+  el.dataset.total = "";
+  if (!ci || !co) { el.textContent = ""; el.classList.remove("price-warn"); return; }
+
+  const r = priceForStay(slug, ci, co);
+  if (r.invalid) { el.textContent = t("price_invalid"); el.classList.add("price-warn"); return; }
+  if (r.closed)  { el.textContent = t("price_closed");  el.classList.add("price-warn"); return; }
+  if (!slug)     { el.textContent = t("price_pick_room"); el.classList.remove("price-warn"); return; }
+  if (r.unknown || r.total === 0) { el.textContent = t("price_consult"); el.classList.remove("price-warn"); return; }
+
+  el.classList.remove("price-warn");
+  const nightsLabel = r.nights === 1 ? t("night") : t("nights");
+  const amount = `${CONFIG.moneda} ${r.total.toLocaleString("en-US")}`;
+  el.textContent = `${t("price_estimate")}: ${amount} · ${r.nights} ${nightsLabel}`;
+  el.dataset.total = amount;
 }
 
 /* ---------- Inicialización ---------- */
@@ -403,22 +519,38 @@ document.addEventListener("DOMContentLoaded", () => {
   // Envío del formulario -> WhatsApp
   const bookForm = document.getElementById("bookForm");
   if (bookForm) {
+    // Cálculo de precio en vivo al cambiar fechas o habitación
+    ["bfCheckin", "bfCheckout", "bfRoom"].forEach((id) => {
+      const elx = document.getElementById(id);
+      if (elx) elx.addEventListener("change", updatePrice);
+    });
+    updatePrice();
+
     bookForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const checkin  = document.getElementById("bfCheckin").value;
       const checkout = document.getElementById("bfCheckout").value;
       if (!checkin || !checkout) { alert(t("alert_dates")); return; }
 
+      const roomName = document.getElementById("bfRoom").value;
+      const r = priceForStay(slugForRoomName(roomName), checkin, checkout);
+      if (r.invalid) { alert(t("price_invalid")); return; }
+      if (r.closed)  { alert(t("price_closed"));  return; }
+
       openWhatsApp({
         name:     document.getElementById("bfName").value.trim(),
         checkin,
         checkout,
         guests:   document.getElementById("bfGuests").value,
-        room:     document.getElementById("bfRoom").value,
+        room:     roomName,
+        price:    document.getElementById("bfPrice").dataset.total || "",
         comments: document.getElementById("bfMsg").value.trim(),
       });
     });
   }
+
+  // Página de Tarifas y Políticas
+  initPoliciesPage();
 
   // Página de habitación (habitacion.html)
   initRoomPage();
@@ -524,4 +656,31 @@ function initRoomPage() {
   }
 
   window.__renderRoom();
+}
+
+/* ============================================================
+   PÁGINA DE TARIFAS Y POLÍTICAS (politicas.html)
+   ============================================================ */
+function initPoliciesPage() {
+  const page = document.getElementById("policiesPage");
+  if (!page) return;
+
+  const fmt = (md) => { const [m, d] = md.split("-"); return `${d}/${m}`; };
+
+  window.__renderPolicies = function () {
+    const wrap = document.getElementById("polSeasons");
+    if (!wrap) return;
+    wrap.innerHTML = "";
+    CONFIG.temporadas.forEach((s) => {
+      const card = document.createElement("div");
+      card.className = "pol-season";
+      card.innerHTML =
+        `<h3>${s.nombre[currentLang] || s.nombre.es}</h3>` +
+        `<p class="pol-range">${t("pol_dates")}: ${fmt(s.desde)} – ${fmt(s.hasta)}</p>` +
+        `<p><strong>${t("pol_cancel")}:</strong> ${s.cancelacion[currentLang] || s.cancelacion.es}</p>`;
+      wrap.appendChild(card);
+    });
+  };
+
+  window.__renderPolicies();
 }

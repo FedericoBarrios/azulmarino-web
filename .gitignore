@@ -14,3 +14,6 @@ npm-debug.log*
 
 # Temporales
 *.tmp
+
+# Respaldo local de fotos originales (pesado, no subir al repo)
+assets/_originales/

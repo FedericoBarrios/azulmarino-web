@@ -263,17 +263,17 @@ const ROOMS = {
   "doble-jardin": {
     key: "room1", folder: "doble-jardin",
     amenities: ["am_breakfast", "am_terrace", "am_access", "am_wifi", "am_cleaning", "am_linens"],
-    images: [],
+    images: ["0. portada.jpg", "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg"],
   },
   "doble-superior": {
     key: "room2", folder: "doble-superior",
     amenities: ["am_breakfast", "am_terrace", "am_space", "am_wifi", "am_cleaning", "am_linens"],
-    images: [],
+    images: ["0. portada.jpg", "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg"],
   },
   "doble-superior-jacuzzi": {
     key: "room3", folder: "doble-superior-jacuzzi",
     amenities: ["am_breakfast", "am_jacuzzi", "am_terrace", "am_wifi", "am_cleaning", "am_access"],
-    images: [],
+    images: ["0. portada.jpg", "1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg"],
   },
 };
 

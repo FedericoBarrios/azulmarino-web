@@ -62,7 +62,7 @@ const I18N = {
     pol_title: "Tarifas y Políticas",
     pol_intro: "Toda la información sobre temporadas, precios y cancelaciones de Azul Marino.",
     pol_price_title: "Precios",
-    pol_price_text: "El precio de tu estadía se calcula automáticamente al elegir las fechas en el formulario de reserva. La reserva se confirma por WhatsApp con los propietarios.",
+    pol_price_text: "El precio depende de la temporada y la disponibilidad. Escribinos por WhatsApp con tus fechas y te confirmamos la tarifa y la reserva.",
     pol_seasons_title: "Temporadas y cancelación",
     pol_closed_title: "Temporada de cierre",
     pol_closed_text: "La posada permanece cerrada durante junio, julio y agosto.",
@@ -161,7 +161,7 @@ const I18N = {
     pol_title: "Rates & Policies",
     pol_intro: "Everything about Azul Marino's seasons, prices and cancellations.",
     pol_price_title: "Prices",
-    pol_price_text: "Your stay's price is calculated automatically when you pick the dates in the booking form. The booking is confirmed via WhatsApp with the owners.",
+    pol_price_text: "Prices depend on the season and availability. Message us on WhatsApp with your dates and we'll confirm the rate and your booking.",
     pol_seasons_title: "Seasons & cancellation",
     pol_closed_title: "Closing season",
     pol_closed_text: "The inn remains closed during June, July and August.",
@@ -259,7 +259,7 @@ const I18N = {
     pol_title: "Tarifas e Políticas",
     pol_intro: "Tudo sobre temporadas, preços e cancelamentos da Azul Marino.",
     pol_price_title: "Preços",
-    pol_price_text: "O preço da sua estadia é calculado automaticamente ao escolher as datas no formulário de reserva. A reserva é confirmada pelo WhatsApp com os proprietários.",
+    pol_price_text: "Os preços dependem da temporada e da disponibilidade. Escreva pelo WhatsApp com suas datas e confirmamos a tarifa e a reserva.",
     pol_seasons_title: "Temporadas e cancelamento",
     pol_closed_title: "Temporada de fechamento",
     pol_closed_text: "A pousada permanece fechada durante junho, julho e agosto.",
@@ -367,7 +367,8 @@ function openWhatsApp({ name, email, phone, country, checkin, checkout, guests, 
   lines.push(`${t("wa_checkout")}: ${checkout}`);
   lines.push(`${t("wa_guests")}: ${guests}`);
   if (room)     lines.push(`${t("wa_room")}: ${room}`);
-  if (price)    lines.push(`${t("price_estimate")}: ${price}`);
+  // PRECIO ESTIMADO DESACTIVADO (a pedido): descomentar para volver a incluirlo
+  // if (price)    lines.push(`${t("price_estimate")}: ${price}`);
   if (comments) lines.push(`${t("wa_comments")}: ${comments}`);
 
   const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`;
@@ -432,14 +433,21 @@ function updatePrice() {
   const r = priceForStay(slug, ci, co);
   if (r.invalid) { el.textContent = t("price_invalid"); el.classList.add("price-warn"); return; }
   if (r.closed)  { el.textContent = t("price_closed");  el.classList.add("price-warn"); return; }
+
+  // Sin advertencias que mostrar
+  el.textContent = "";
+  el.classList.remove("price-warn");
+
+  /* ---- PRECIO ESTIMADO EN LA WEB (DESACTIVADO a pedido) ----
+     Para volver a mostrar el precio, descomentá este bloque
+     (y también la línea "price" del mensaje en openWhatsApp()).
   if (!slug)     { el.textContent = t("price_pick_room"); el.classList.remove("price-warn"); return; }
   if (r.unknown || r.total === 0) { el.textContent = t("price_consult"); el.classList.remove("price-warn"); return; }
-
-  el.classList.remove("price-warn");
   const nightsLabel = r.nights === 1 ? t("night") : t("nights");
   const amount = `${CONFIG.moneda} ${r.total.toLocaleString("en-US")}`;
   el.textContent = `${t("price_estimate")}: ${amount} · ${r.nights} ${nightsLabel}`;
   el.dataset.total = amount;
+  ---- fin PRECIO ESTIMADO ---- */
 }
 
 /* ---------- Inicialización ---------- */

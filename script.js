@@ -392,6 +392,82 @@ function seasonForDate(date) {
 function isClosedDate(date) { return CONFIG.mesesCerrados.includes(date.getMonth()); }
 function parseDateInput(str) { const [y, m, d] = str.split("-").map(Number); return new Date(y, m - 1, d); }
 
+/* ---- Precios desde planilla de Google (con respaldo a config.js) ---- */
+let PRICE_OVERRIDES = []; // se llena desde la planilla, si hay
+
+const HEADER_TO_SLUG = {
+  "doble-jardin": "doble-jardin", "doble jardin": "doble-jardin", "doble jardín": "doble-jardin",
+  "doble-superior": "doble-superior", "doble superior": "doble-superior",
+  "doble-superior-jacuzzi": "doble-superior-jacuzzi",
+  "doble superior + jacuzzi": "doble-superior-jacuzzi", "doble superior jacuzzi": "doble-superior-jacuzzi",
+};
+
+function parseSheetDate(s) {
+  s = (s || "").trim();
+  let m;
+  if ((m = s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})$/))) return new Date(+m[1], +m[2] - 1, +m[3]);
+  if ((m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})$/))) return new Date(+m[3], +m[2] - 1, +m[1]); // DD/MM/AAAA
+  return null;
+}
+
+function splitCsvLine(line) {
+  const res = []; let cur = "", q = false;
+  for (let i = 0; i < line.length; i++) {
+    const c = line[i];
+    if (c === '"') { if (q && line[i + 1] === '"') { cur += '"'; i++; } else q = !q; }
+    else if (c === "," && !q) { res.push(cur); cur = ""; }
+    else cur += c;
+  }
+  res.push(cur);
+  return res;
+}
+
+function parsePriceCsv(text) {
+  const rows = text.split(/\r?\n/).filter((r) => r.trim() !== "");
+  if (rows.length < 2) return [];
+  const headers = splitCsvLine(rows[0]).map((h) => h.trim().toLowerCase());
+  const iDesde = headers.indexOf("desde"), iHasta = headers.indexOf("hasta");
+  if (iDesde < 0 || iHasta < 0) return [];
+  const roomCols = [];
+  headers.forEach((h, idx) => { const slug = HEADER_TO_SLUG[h]; if (slug) roomCols.push({ idx, slug }); });
+  const out = [];
+  for (let r = 1; r < rows.length; r++) {
+    const cells = splitCsvLine(rows[r]);
+    const d1 = parseSheetDate(cells[iDesde]), d2 = parseSheetDate(cells[iHasta]);
+    if (!d1 || !d2) continue;
+    const precios = {};
+    roomCols.forEach((rc) => {
+      const v = parseFloat((cells[rc.idx] || "").replace(",", ".").replace(/[^\d.]/g, ""));
+      if (!isNaN(v) && v > 0) precios[rc.slug] = v;
+    });
+    if (Object.keys(precios).length) out.push({ desde: d1, hasta: d2, precios });
+  }
+  return out;
+}
+
+async function loadPriceSheet() {
+  if (!CONFIG.preciosSheetUrl) return;
+  try {
+    const resp = await fetch(CONFIG.preciosSheetUrl, { cache: "no-store" });
+    if (!resp.ok) return;
+    PRICE_OVERRIDES = parsePriceCsv(await resp.text());
+    if (typeof updatePrice === "function") updatePrice();
+    if (typeof window.__renderPolicies === "function") window.__renderPolicies();
+  } catch (e) { /* silencioso: se usan los precios de config.js */ }
+}
+
+// Precio de UNA noche: primero la planilla (por rango de fechas), si no, la temporada de config.js
+function priceForNight(roomSlug, date) {
+  for (const o of PRICE_OVERRIDES) {
+    if (date >= o.desde && date <= o.hasta) {
+      const p = o.precios[roomSlug];
+      if (p != null) return p;
+    }
+  }
+  const s = seasonForDate(date);
+  return s && s.precios ? s.precios[roomSlug] : null;
+}
+
 // slug de habitación a partir del nombre en español (value del <select>)
 function slugForRoomName(name) {
   for (const slug in ROOMS) { if (I18N.es[ROOMS[slug].key + "_t"] === name) return slug; }
@@ -409,8 +485,7 @@ function priceForStay(roomSlug, ciStr, coStr) {
     res.nights++;
     if (isClosedDate(d)) { res.closed = true; }
     else {
-      const s = seasonForDate(d);
-      const price = s && s.precios ? s.precios[roomSlug] : null;
+      const price = priceForNight(roomSlug, d);
       if (price == null) res.unknown = true; else res.total += price;
     }
     d.setDate(d.getDate() + 1);
@@ -571,6 +646,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Página de Tarifas y Políticas
   initPoliciesPage();
+
+  // Cargar precios desde la planilla de Google (si está configurada)
+  loadPriceSheet();
 
   // Página de habitación (habitacion.html)
   initRoomPage();

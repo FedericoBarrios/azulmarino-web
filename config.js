@@ -11,6 +11,21 @@
 const CONFIG = {
   moneda: "USD",
 
+  /* --- PLANILLA DE PRECIOS (Google Sheets) ---
+     Dejalo en null para usar los precios de más abajo (de este archivo).
+     Para manejar los precios desde una planilla de Google, sin tocar código:
+       1) Creá una planilla con estas columnas (primera fila = títulos):
+            desde | hasta | doble-jardin | doble-superior | doble-superior-jacuzzi
+          - Fechas en formato AAAA-MM-DD (ej: 2026-12-25). Una fila por rango.
+          - Los precios son por noche, en USD (solo el número).
+       2) Archivo -> Compartir -> Publicar en la web -> elegí la hoja y formato "CSV".
+       3) Copiá el link que te da y pegalo acá abajo entre comillas.
+     El sitio lee la planilla al cargar. Si algún rango no está, usa los precios
+     de las temporadas de este archivo. Si la planilla falla, también usa este archivo
+     (nunca se rompe). Ejemplo:
+     preciosSheetUrl: "https://docs.google.com/spreadsheets/d/e/XXXX/pub?output=csv", */
+  preciosSheetUrl: null,
+
   /* --- Meses en que la posada está CERRADA ---
      0=Ene 1=Feb 2=Mar 3=Abr 4=May 5=Jun 6=Jul 7=Ago 8=Sep 9=Oct 10=Nov 11=Dic
      Junio, Julio y Agosto: */

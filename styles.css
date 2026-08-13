@@ -107,6 +107,12 @@ h3 { font-size: 1.5rem; }
 .scrolled .logo-mark { color: var(--navy); }
 .scrolled .logo-sub { color: var(--gold); }
 
+/* Logo en imagen (si existe assets/logo.png; si no, cae al texto de arriba) */
+.logo-img { height: 46px; width: auto; max-width: 60vw; object-fit: contain; display: block; }
+.logo-text { display: none; flex-direction: column; line-height: 1.05; }
+.site-header:not(.scrolled) .logo-img { filter: brightness(0) invert(1); } /* blanco sobre el hero */
+@media (max-width: 520px) { .logo-img { height: 34px; } }
+
 .main-nav { display: flex; align-items: center; gap: 30px; }
 .main-nav a { color: var(--white); font-size: .95rem; letter-spacing: .03em; transition: color .2s; }
 .main-nav a:hover { color: var(--gold); }

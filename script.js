@@ -93,6 +93,8 @@ const I18N = {
     book_p2: "✓ Mejor precio garantizado",
     book_p3: "✓ Sin cargos ni pagos online",
     f_name: "Nombre y apellido", f_room: "Habitación", f_room_any: "Sin preferencia",
+    f_email: "Email", f_phone: "Teléfono", f_country: "País de residencia",
+    wa_email: "Email", wa_phone: "Teléfono", wa_country: "País de residencia",
     f_msg: "Comentarios (opcional)", f_submit: "Enviar por WhatsApp",
 
     contact_eyebrow: "Contacto",
@@ -190,6 +192,8 @@ const I18N = {
     book_p2: "✓ Best price guaranteed",
     book_p3: "✓ No online charges or payments",
     f_name: "Full name", f_room: "Room", f_room_any: "No preference",
+    f_email: "Email", f_phone: "Phone", f_country: "Country of residence",
+    wa_email: "Email", wa_phone: "Phone", wa_country: "Country of residence",
     f_msg: "Comments (optional)", f_submit: "Send via WhatsApp",
 
     contact_eyebrow: "Contact",
@@ -286,6 +290,8 @@ const I18N = {
     book_p2: "✓ Melhor preço garantido",
     book_p3: "✓ Sem cobranças ou pagamentos online",
     f_name: "Nome completo", f_room: "Quarto", f_room_any: "Sem preferência",
+    f_email: "E-mail", f_phone: "Telefone", f_country: "País de residência",
+    wa_email: "E-mail", wa_phone: "Telefone", wa_country: "País de residência",
     f_msg: "Comentários (opcional)", f_submit: "Enviar pelo WhatsApp",
 
     contact_eyebrow: "Contato",
@@ -351,9 +357,12 @@ function applyLang(lang) {
 function t(key) { return (I18N[currentLang] && I18N[currentLang][key]) || I18N.es[key] || key; }
 
 /* ---------- Construir y abrir WhatsApp ---------- */
-function openWhatsApp({ name, checkin, checkout, guests, room, comments, price }) {
+function openWhatsApp({ name, email, phone, country, checkin, checkout, guests, room, comments, price }) {
   const lines = [t("wa_greeting"), ""];
-  if (name)     lines.push(`${t("wa_name")}: ${name}`);
+  if (name)    lines.push(`${t("wa_name")}: ${name}`);
+  if (email)   lines.push(`${t("wa_email")}: ${email}`);
+  if (phone)   lines.push(`${t("wa_phone")}: ${phone}`);
+  if (country) lines.push(`${t("wa_country")}: ${country}`);
   lines.push(`${t("wa_checkin")}: ${checkin}`);
   lines.push(`${t("wa_checkout")}: ${checkout}`);
   lines.push(`${t("wa_guests")}: ${guests}`);
@@ -539,6 +548,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
       openWhatsApp({
         name:     document.getElementById("bfName").value.trim(),
+        email:    document.getElementById("bfEmail").value.trim(),
+        phone:    document.getElementById("bfPhone").value.trim(),
+        country:  document.getElementById("bfCountry").value.trim(),
         checkin,
         checkout,
         guests:   document.getElementById("bfGuests").value,

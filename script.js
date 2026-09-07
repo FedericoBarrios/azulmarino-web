@@ -372,7 +372,7 @@ function openWhatsApp({ name, email, phone, country, checkin, checkout, guests, 
   if (comments) lines.push(`${t("wa_comments")}: ${comments}`);
 
   const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lines.join("\n"))}`;
-  window.open(url, "_blank");
+  window.open(url, "_blank", "noopener");
 }
 
 /* ============================================================
@@ -544,6 +544,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 40);
     onScroll();
     window.addEventListener("scroll", onScroll);
+  }
+
+  // Logo: si la imagen no existe, mostrar el texto de respaldo
+  const logoImg = document.querySelector(".logo-img");
+  if (logoImg) {
+    const showLogoText = () => {
+      logoImg.style.display = "none";
+      const txt = logoImg.nextElementSibling;
+      if (txt) txt.style.display = "flex";
+    };
+    if (logoImg.complete && logoImg.naturalWidth === 0) showLogoText();
+    logoImg.addEventListener("error", showLogoText);
   }
 
   // Menú móvil

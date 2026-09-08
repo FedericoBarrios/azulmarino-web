@@ -19,7 +19,7 @@
   <!-- Tipografías -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -37,10 +37,10 @@
       </a>
 
       <nav class="main-nav" id="mainNav">
+        <a href="#inicio" data-i18n="nav_home">Inicio</a>
         <a href="#habitaciones" data-i18n="nav_rooms">Habitaciones</a>
-        <a href="#servicios" data-i18n="nav_services">Servicios</a>
+        <a href="jose-ignacio.html" data-i18n="nav_jose">José Ignacio</a>
         <a href="#galeria" data-i18n="nav_gallery">Galería</a>
-        <a href="politicas.html" data-i18n="nav_rates">Tarifas y políticas</a>
         <a href="#contacto" data-i18n="nav_contact">Contacto</a>
         <a href="#reservar" class="btn btn-nav" data-i18n="nav_book">Reservar</a>
       </nav>
@@ -154,7 +154,7 @@
             </ul>
             <div class="room-actions">
               <a href="habitacion.html?room=doble-jardin" class="btn btn-outline" data-i18n="room_view">Ver habitación</a>
-              <button class="btn btn-primary room-book" data-room="Doble Jardín" data-i18n="room_book">Reservar</button>
+              <button class="btn btn-primary room-book" data-room="Doble Jardín" data-i18n="room_reserve">Reservar</button>
             </div>
           </div>
         </article>
@@ -173,7 +173,7 @@
             </ul>
             <div class="room-actions">
               <a href="habitacion.html?room=doble-superior" class="btn btn-outline" data-i18n="room_view">Ver habitación</a>
-              <button class="btn btn-primary room-book" data-room="Doble Superior" data-i18n="room_book">Reservar</button>
+              <button class="btn btn-primary room-book" data-room="Doble Superior" data-i18n="room_reserve">Reservar</button>
             </div>
           </div>
         </article>
@@ -191,7 +191,7 @@
             </ul>
             <div class="room-actions">
               <a href="habitacion.html?room=doble-superior-jacuzzi" class="btn btn-outline" data-i18n="room_view">Ver habitación</a>
-              <button class="btn btn-primary room-book" data-room="Doble Superior + Jacuzzi" data-i18n="room_book">Reservar</button>
+              <button class="btn btn-primary room-book" data-room="Doble Superior + Jacuzzi" data-i18n="room_reserve">Reservar</button>
             </div>
           </div>
         </article>
@@ -202,8 +202,9 @@
   <!-- ============ SERVICIOS ============ -->
   <section class="services section alt" id="servicios">
     <div class="container">
-      <p class="eyebrow center" data-i18n="services_eyebrow">Todo incluido</p>
+      <p class="eyebrow center" data-i18n="services_eyebrow">Servicios</p>
       <h2 class="center" data-i18n="services_title">Servicios de la posada</h2>
+      <p class="section-lead center" data-i18n="services_lead">Para nosotros, tu confort es nuestro mayor placer.</p>
       <div class="services-grid">
         <div class="service"><span class="service-ic">🥐</span><span data-i18n="srv_breakfast">Desayuno continental diario, con opciones sin gluten</span></div>
         <div class="service"><span class="service-ic">🏊</span><span data-i18n="srv_pool">Piscina climatizada exterior</span></div>
@@ -309,6 +310,36 @@
     </div>
   </section>
 
+  <!-- ============ TESTIMONIOS ============ -->
+  <section class="testimonials section" id="testimonios">
+    <div class="container">
+      <p class="eyebrow center" data-i18n="testi_eyebrow">Testimonios</p>
+      <h2 class="center" data-i18n="testi_title">Lo que dicen nuestros huéspedes</h2>
+      <div class="testi-grid">
+        <figure class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <blockquote class="testi-text">Todo 10 puntos. La ubicación, el entorno, la comodidad, el servicio. Muy recomendable.</blockquote>
+          <figcaption class="testi-author">César Gual Hernández</figcaption>
+        </figure>
+        <figure class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <blockquote class="testi-text">Excelente posada, en un lugar muy tranquilo y a dos minutos del centro de José Ignacio. La habitación muy cómoda, con una hermosa vista al bosque. La atención y el desayuno, excelentes.</blockquote>
+          <figcaption class="testi-author">Diego Carranza</figcaption>
+        </figure>
+        <figure class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <blockquote class="testi-text">Amei me hospedar aqui! Lugar que dá paz, é lindo e super charmoso. O café da manhã incluso faz total diferença!</blockquote>
+          <figcaption class="testi-author">Laura</figcaption>
+        </figure>
+        <figure class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <blockquote class="testi-text">A wonderful stay in peaceful nature just outside José Ignacio. Spacious rooms, lovely private balconies and a relaxing pool. Highly recommended!</blockquote>
+          <figcaption class="testi-author">Stephen Da Costa</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ CONTACTO / UBICACIÓN ============ -->
   <section class="contact section" id="contacto">
     <div class="container contact-grid">
@@ -365,10 +396,10 @@
       </div>
       <div class="footer-links">
         <a href="#habitaciones" data-i18n="nav_rooms">Habitaciones</a>
-        <a href="#servicios" data-i18n="nav_services">Servicios</a>
-        <a href="politicas.html" data-i18n="nav_rates">Tarifas y políticas</a>
-        <a href="#reservar" data-i18n="nav_book">Reservar</a>
+        <a href="jose-ignacio.html" data-i18n="nav_jose">José Ignacio</a>
+        <a href="#galeria" data-i18n="nav_gallery">Galería</a>
         <a href="#contacto" data-i18n="nav_contact">Contacto</a>
+        <a href="politicas.html" data-i18n="nav_rates">Tarifas y políticas</a>
       </div>
     </div>
     <div class="footer-bottom">

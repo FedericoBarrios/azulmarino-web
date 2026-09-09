@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="referrer" content="strict-origin-when-cross-origin" />
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://docs.google.com https://*.googleusercontent.com; frame-src https://www.google.com https://maps.google.com; base-uri 'self'; form-action 'self'; object-src 'none'" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self' https://docs.google.com https://*.googleusercontent.com; frame-src https://www.google.com https://maps.google.com; base-uri 'self'; form-action 'self'; object-src 'none'" />
   <title>Azul Marino · Posada Boutique · José Ignacio, Uruguay</title>
   <meta name="description" content="Azul Marino, posada boutique en José Ignacio. 12 suites exclusivas donde el campo, la arena y el mar se encuentran. A 400 m de la playa." />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
@@ -19,7 +19,8 @@
   <!-- Tipografías -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <link rel="stylesheet" href="styles.css" />
 </head>
@@ -106,6 +107,15 @@
       </div>
       <div class="intro-media ph" data-ph="Foto ambiente / exterior"></div>
     </div>
+
+    <div class="container intro-grid intro-grid-2">
+      <div class="intro-media ph ph-gal3" data-ph="Foto salón"></div>
+      <div class="intro-text">
+        <p data-i18n="about2_p1">Todos los días se sirve un desayuno continental con frutas, panes y zumos naturales (opciones sin gluten).</p>
+        <p data-i18n="about2_p2">Contamos con un salón principal donde están la recepción, el bar y el living con TV y estufa a leña. También ofrecemos piscina climatizada al aire libre, bicicletas y estacionamiento.</p>
+        <p class="accent-script" data-i18n="about2_highlight">Te aseguramos tranquilidad, privacidad y confort.</p>
+      </div>
+    </div>
   </section>
 
   <!-- ============ POR QUÉ ELEGIRNOS ============ -->
@@ -115,17 +125,17 @@
       <h2 class="center" data-i18n="reasons_title">Tres razones para quedarte</h2>
       <div class="reasons-grid">
         <div class="reason">
-          <div class="reason-icon">🔑</div>
+          <div class="reason-icon"><i class="fa-solid fa-bed"></i></div>
           <h3 data-i18n="reason1_t">Comodidad con privacidad</h3>
           <p data-i18n="reason1_p">Suites independientes con terraza propia. Tu espacio, sin interrupciones.</p>
         </div>
         <div class="reason">
-          <div class="reason-icon">🌿</div>
+          <div class="reason-icon"><i class="fa-solid fa-tree"></i></div>
           <h3 data-i18n="reason2_t">Paz y naturaleza</h3>
           <p data-i18n="reason2_p">Pioneros en la zona, rodeados de campo, arena y mar en total tranquilidad.</p>
         </div>
         <div class="reason">
-          <div class="reason-icon">✨</div>
+          <div class="reason-icon"><i class="fa-solid fa-bell-concierge"></i></div>
           <h3 data-i18n="reason3_t">Servicio personalizado</h3>
           <p data-i18n="reason3_p">Operada por sus dueños, con atención a todos los detalles de tu estadía.</p>
         </div>
@@ -205,16 +215,33 @@
       <p class="eyebrow center" data-i18n="services_eyebrow">Servicios</p>
       <h2 class="center" data-i18n="services_title">Servicios de la posada</h2>
       <p class="section-lead center" data-i18n="services_lead">Para nosotros, tu confort es nuestro mayor placer.</p>
+
+      <div class="services-featured">
+        <article class="feat-card">
+          <div class="feat-media ph ph-desayuno" data-ph="Foto desayuno"></div>
+          <div class="feat-body">
+            <h3 data-i18n="srv_feat_breakfast_t">Desayuno incluido</h3>
+            <p data-i18n="srv_feat_breakfast_p">Olvidate de salir a buscar dónde desayunar: está incluido, en el bar o en tu habitación sin cargo.</p>
+          </div>
+        </article>
+        <article class="feat-card">
+          <div class="feat-media ph ph-gal2" data-ph="Foto bar"></div>
+          <div class="feat-body">
+            <h3 data-i18n="srv_feat_bar_t">Bar</h3>
+            <p data-i18n="srv_feat_bar_p">Nada mejor que un bar a pocos pasos de la habitación. Tragos, bebidas y más.</p>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="services-plus accent-script center" data-i18n="services_plus">Y además...</h3>
       <div class="services-grid">
-        <div class="service"><span class="service-ic">🥐</span><span data-i18n="srv_breakfast">Desayuno continental diario, con opciones sin gluten</span></div>
-        <div class="service"><span class="service-ic">🏊</span><span data-i18n="srv_pool">Piscina climatizada exterior</span></div>
-        <div class="service"><span class="service-ic">🚲</span><span data-i18n="srv_bikes">Bicicletas a disposición</span></div>
-        <div class="service"><span class="service-ic">📶</span><span data-i18n="srv_wifi">WiFi gratuito</span></div>
-        <div class="service"><span class="service-ic">🅿️</span><span data-i18n="srv_parking">Estacionamiento</span></div>
-        <div class="service"><span class="service-ic">⛱️</span><span data-i18n="srv_beach">Sillas de playa y sombrillas</span></div>
-        <div class="service"><span class="service-ic">🧺</span><span data-i18n="srv_towels">Servicio de toallas</span></div>
-        <div class="service"><span class="service-ic">🔥</span><span data-i18n="srv_lounge">Salón con bar, living y estufa de leña</span></div>
-        <div class="service"><span class="service-ic">🗺️</span><span data-i18n="srv_advice">Asesoramiento de restaurantes y actividades</span></div>
+        <div class="service"><span class="service-ic"><i class="fa-solid fa-wifi"></i></span><span data-i18n="srv_wifi">WiFi gratis en toda la posada</span></div>
+        <div class="service"><span class="service-ic"><i class="fa-solid fa-bath"></i></span><span data-i18n="srv_towels">Servicio de toallas</span></div>
+        <div class="service"><span class="service-ic"><i class="fa-solid fa-chair"></i></span><span data-i18n="srv_chairs">Sillas para playa</span></div>
+        <div class="service"><span class="service-ic"><i class="fa-solid fa-person-swimming"></i></span><span data-i18n="srv_pool">Piscina abierta climatizada</span></div>
+        <div class="service"><span class="service-ic"><i class="fa-solid fa-fire"></i></span><span data-i18n="srv_lounge">Living con bar, estufa a leña y TV</span></div>
+        <div class="service"><span class="service-ic"><i class="fa-solid fa-square-parking"></i></span><span data-i18n="srv_parking">Estacionamiento</span></div>
+        <div class="service"><span class="service-ic"><i class="fa-solid fa-umbrella-beach"></i></span><span data-i18n="srv_umbrellas">Sombrillas</span></div>
       </div>
     </div>
   </section>

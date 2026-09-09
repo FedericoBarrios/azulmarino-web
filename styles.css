@@ -332,6 +332,27 @@ h3 { font-size: 1.5rem; }
 .pol-season p { color: var(--ink); margin: 0 0 6px; }
 .pol-season p strong { color: var(--navy); }
 
+/* ============ SEGUNDO BLOQUE INTRO + FRASE MANUSCRITA ============ */
+.intro-grid-2 { margin-top: 56px; }
+.accent-script { font-family: 'Caveat', 'Segoe Script', cursive; font-weight: 600; font-size: clamp(1.6rem, 3vw, 2.1rem); color: var(--gold); line-height: 1.2; margin-top: 14px; }
+
+/* ============ ICONOS (Font Awesome) ============ */
+.reason-icon { color: var(--gold); }
+.reason-icon i { line-height: 1; }
+.service-ic { color: var(--navy); display: inline-flex; align-items: center; justify-content: center; width: 1.9rem; flex-shrink: 0; }
+.service-ic i { font-size: 1.4rem; }
+
+/* ============ SERVICIOS DESTACADOS (Desayuno / Bar) ============ */
+.services-featured { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin: 48px 0 8px; }
+.feat-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); display: flex; flex-direction: column; }
+.feat-media { height: 300px; background-size: cover; background-position: center; }
+.feat-media.ph-gal2 { background-position: center 42% !important; }      /* pizarrón del bar (foto vertical) */
+.feat-media.ph-desayuno { background-position: center 40% !important; }  /* desayuno (foto vertical) */
+.feat-body { padding: 24px 26px; }
+.feat-body h3 { margin-bottom: 8px; }
+.feat-body p { color: var(--muted); }
+.services-plus { text-align: center; margin: 42px 0 26px; }
+
 /* ============ TESTIMONIOS ============ */
 .testi-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 48px; }
 .testi-card { background: var(--white); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px 30px; box-shadow: var(--shadow); margin: 0; display: flex; flex-direction: column; }
@@ -355,6 +376,8 @@ h3 { font-size: 1.5rem; }
   .intro-grid, .book-grid, .contact-grid { grid-template-columns: 1fr; gap: 36px; }
   .reasons-grid, .rooms-grid, .services-grid { grid-template-columns: 1fr; }
   .testi-grid { grid-template-columns: 1fr; }
+  .services-featured { grid-template-columns: 1fr; }
+  .feat-media { height: 240px; }
   .room-detail { grid-template-columns: 1fr; gap: 30px; }
   .rp-main { height: 320px; }
   .rp-amenities { grid-template-columns: 1fr; }
@@ -415,6 +438,7 @@ h3 { font-size: 1.5rem; }
     url('assets/hero.jpg') !important;
 }
 .intro-media { background-image: url('assets/exterior.jpg') !important; }
+.ph-desayuno { background-image: url('assets/desayuno.jpg') !important; }
 .ph-gal1 { background-image: url('assets/galeria-1.jpg') !important; }
 .ph-gal2 { background-image: url('assets/galeria-2.jpg') !important; }
 .ph-gal3 { background-image: url('assets/galeria-3.jpg') !important; }

@@ -27,7 +27,10 @@ const I18N = {
     intro_eyebrow: "Nuestra posada",
     intro_title: "Paz & naturaleza",
     intro_p1: "La Posada Azul Marino ofrece 12 suites exclusivas en medio de una zona natural muy atractiva de José Ignacio, donde el campo, la arena y el mar se fusionan de forma única. Se encuentra a tan solo 400 mts de la playa, 2 km del pueblo de José Ignacio y 5 km de la laguna Garzón.",
-    intro_p2: "Es atendida por sus propios dueños, lo que hace que nuestro huésped disfrute de su estadía con las mejores recomendaciones de la zona. Te aseguramos tranquilidad, privacidad y confort.",
+    intro_p2: "Es atendida por sus propios dueños, lo que hace que nuestro huésped disfrute de su estadía con las mejores recomendaciones de la zona.",
+    about2_p1: "Todos los días se sirve un desayuno continental con frutas, panes y zumos naturales (opciones sin gluten).",
+    about2_p2: "Contamos con un salón principal donde están la recepción, el bar y el living con TV y estufa a leña. También ofrecemos piscina climatizada al aire libre, bicicletas y estacionamiento.",
+    about2_highlight: "Te aseguramos tranquilidad, privacidad y confort.",
 
     reasons_eyebrow: "Por qué Azul Marino",
     reasons_title: "¿Por qué elegir Azul Marino?",
@@ -95,6 +98,12 @@ const I18N = {
     srv_towels: "Servicio de toallas",
     srv_lounge: "Living con bar, estufa a leña y TV",
     srv_advice: "Asesoramiento y gestión de reservas en restoranes, actividades y paseos",
+    services_plus: "Y además...",
+    srv_chairs: "Sillas para playa", srv_umbrellas: "Sombrillas",
+    srv_feat_breakfast_t: "Desayuno incluido",
+    srv_feat_breakfast_p: "Olvidate de salir a buscar dónde desayunar: está incluido, en el bar o en tu habitación sin cargo.",
+    srv_feat_bar_t: "Bar",
+    srv_feat_bar_p: "Nada mejor que un bar a pocos pasos de la habitación. Tragos, bebidas y más.",
     testi_eyebrow: "Testimonios",
     testi_title: "Lo que dicen nuestros huéspedes",
 
@@ -141,7 +150,10 @@ const I18N = {
     intro_eyebrow: "Our inn",
     intro_title: "Peace & nature",
     intro_p1: "Posada Azul Marino offers 12 exclusive suites within a beautiful natural area of José Ignacio, where countryside, sand and sea blend in a unique way. It sits just 400 m from the beach, 2 km from the village of José Ignacio and 5 km from Garzón lagoon.",
-    intro_p2: "It is run by its own owners, so our guests enjoy their stay with the best local recommendations. We guarantee calm, privacy and comfort.",
+    intro_p2: "It is run by its own owners, so our guests enjoy their stay with the best local recommendations.",
+    about2_p1: "Every day we serve a continental breakfast with fruit, breads and fresh juices (gluten-free options).",
+    about2_p2: "There is a main lounge with the reception, the bar and a living room with TV and a wood stove. We also offer a heated outdoor pool, bicycles and parking.",
+    about2_highlight: "We guarantee calm, privacy and comfort.",
 
     reasons_eyebrow: "Why Azul Marino",
     reasons_title: "Why choose Azul Marino?",
@@ -209,6 +221,12 @@ const I18N = {
     srv_towels: "Towel service",
     srv_lounge: "Living room with bar, wood stove and TV",
     srv_advice: "Advice and booking of restaurants, activities and tours",
+    services_plus: "And more...",
+    srv_chairs: "Beach chairs", srv_umbrellas: "Beach umbrellas",
+    srv_feat_breakfast_t: "Breakfast included",
+    srv_feat_breakfast_p: "No need to head out for breakfast: it's included, at the bar or in your room at no charge.",
+    srv_feat_bar_t: "Bar",
+    srv_feat_bar_p: "Nothing better than a bar just steps from your room. Cocktails, drinks and more.",
     testi_eyebrow: "Testimonials",
     testi_title: "What our guests say",
 
@@ -254,7 +272,10 @@ const I18N = {
     intro_eyebrow: "Nossa pousada",
     intro_title: "Paz & natureza",
     intro_p1: "A Posada Azul Marino oferece 12 suítes exclusivas em meio a uma zona natural muito atraente de José Ignacio, onde o campo, a areia e o mar se fundem de forma única. Fica a apenas 400 m da praia, 2 km do povoado de José Ignacio e 5 km da lagoa Garzón.",
-    intro_p2: "É atendida pelos próprios donos, o que faz com que nosso hóspede aproveite a estadia com as melhores recomendações da região. Garantimos tranquilidade, privacidade e conforto.",
+    intro_p2: "É atendida pelos próprios donos, o que faz com que nosso hóspede aproveite a estadia com as melhores recomendações da região.",
+    about2_p1: "Todos os dias servimos um café da manhã continental com frutas, pães e sucos naturais (opções sem glúten).",
+    about2_p2: "Temos um salão principal com a recepção, o bar e o living com TV e lareira a lenha. Também oferecemos piscina aquecida ao ar livre, bicicletas e estacionamento.",
+    about2_highlight: "Garantimos tranquilidade, privacidade e conforto.",
 
     reasons_eyebrow: "Por que Azul Marino",
     reasons_title: "Por que escolher a Azul Marino?",
@@ -322,6 +343,12 @@ const I18N = {
     srv_towels: "Serviço de toalhas",
     srv_lounge: "Living com bar, lareira a lenha e TV",
     srv_advice: "Assessoria e reservas em restaurantes, atividades e passeios",
+    services_plus: "E ainda...",
+    srv_chairs: "Cadeiras de praia", srv_umbrellas: "Guarda-sóis",
+    srv_feat_breakfast_t: "Café da manhã incluído",
+    srv_feat_breakfast_p: "Esqueça de sair para procurar onde tomar café: está incluído, no bar ou no seu quarto sem custo.",
+    srv_feat_bar_t: "Bar",
+    srv_feat_bar_p: "Nada melhor que um bar a poucos passos do quarto. Drinks, bebidas e mais.",
     testi_eyebrow: "Depoimentos",
     testi_title: "O que dizem nossos hóspedes",
 
@@ -618,6 +645,19 @@ document.addEventListener("DOMContentLoaded", () => {
   // Fecha mínima = hoy
   const today = new Date().toISOString().split("T")[0];
   document.querySelectorAll('input[type="date"]').forEach((i) => i.setAttribute("min", today));
+
+  // Al elegir la llegada, la salida no puede ser anterior y toma esa fecha por defecto
+  function linkDates(ciId, coId) {
+    const ci = document.getElementById(ciId), co = document.getElementById(coId);
+    if (!ci || !co) return;
+    ci.addEventListener("change", () => {
+      if (!ci.value) return;
+      co.min = ci.value;
+      if (!co.value || co.value < ci.value) co.value = ci.value;
+    });
+  }
+  linkDates("qbCheckin", "qbCheckout");
+  linkDates("bfCheckin", "bfCheckout");
 
   // Barra rápida -> pasa datos al formulario y baja a reservar
   const qbSubmit = document.getElementById("qbSubmit");

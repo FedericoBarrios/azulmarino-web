@@ -284,7 +284,7 @@
         <div class="field-row">
           <div class="field">
             <label for="bfEmail" data-i18n="f_email">Email</label>
-            <input type="email" id="bfEmail" required />
+            <input type="email" id="bfEmail" required pattern="[^@\s]+@[^@\s]+\.[^@\s]+" data-i18n-title="email_title" title="Ingresá un email válido, por ejemplo nombre@dominio.com" />
           </div>
           <div class="field">
             <label for="bfPhone" data-i18n="f_phone">Teléfono</label>

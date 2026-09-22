@@ -118,6 +118,7 @@ const I18N = {
     book_p3: "✓ Sin cargos ni pagos online",
     f_name: "Nombre y apellido", f_room: "Habitación", f_room_any: "Sin preferencia",
     f_email: "Email", f_phone: "Teléfono", f_country: "País de residencia",
+    email_title: "Ingresá un email válido, por ejemplo nombre@dominio.com",
     wa_email: "Email", wa_phone: "Teléfono", wa_country: "País de residencia",
     f_msg: "Comentarios (opcional)", f_submit: "Enviar por WhatsApp",
 
@@ -241,6 +242,7 @@ const I18N = {
     book_p3: "✓ No online charges or payments",
     f_name: "Full name", f_room: "Room", f_room_any: "No preference",
     f_email: "Email", f_phone: "Phone", f_country: "Country of residence",
+    email_title: "Enter a valid email, e.g. name@domain.com",
     wa_email: "Email", wa_phone: "Phone", wa_country: "Country of residence",
     f_msg: "Comments (optional)", f_submit: "Send via WhatsApp",
 
@@ -363,6 +365,7 @@ const I18N = {
     book_p3: "✓ Sem cobranças ou pagamentos online",
     f_name: "Nome completo", f_room: "Quarto", f_room_any: "Sem preferência",
     f_email: "E-mail", f_phone: "Telefone", f_country: "País de residência",
+    email_title: "Insira um e-mail válido, por exemplo nome@dominio.com",
     wa_email: "E-mail", wa_phone: "Telefone", wa_country: "País de residência",
     f_msg: "Comentários (opcional)", f_submit: "Enviar pelo WhatsApp",
 
@@ -413,6 +416,12 @@ function applyLang(lang) {
     if (dict[key] !== undefined) el.textContent = dict[key];
   });
 
+  // Atributos title traducidos (ej: mensaje de ayuda del email)
+  document.querySelectorAll("[data-i18n-title]").forEach((el) => {
+    const key = el.getAttribute("data-i18n-title");
+    if (dict[key] !== undefined) el.title = dict[key];
+  });
+
   document.documentElement.lang = lang;
   document.querySelectorAll(".lang-switch button").forEach((b) => {
     b.classList.toggle("active", b.dataset.lang === lang);
@@ -428,6 +437,13 @@ function applyLang(lang) {
 
 function t(key) { return (I18N[currentLang] && I18N[currentLang][key]) || I18N.es[key] || key; }
 
+// Convierte "AAAA-MM-DD" (formato interno del <input date>) a "DD/MM/AAAA"
+function toDMY(s) {
+  if (!s || !/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
+  const [y, m, d] = s.split("-");
+  return `${d}/${m}/${y}`;
+}
+
 /* ---------- Construir y abrir WhatsApp ---------- */
 function openWhatsApp({ name, email, phone, country, checkin, checkout, guests, room, comments, price }) {
   const lines = [t("wa_greeting"), ""];
@@ -435,8 +451,8 @@ function openWhatsApp({ name, email, phone, country, checkin, checkout, guests, 
   if (email)   lines.push(`${t("wa_email")}: ${email}`);
   if (phone)   lines.push(`${t("wa_phone")}: ${phone}`);
   if (country) lines.push(`${t("wa_country")}: ${country}`);
-  lines.push(`${t("wa_checkin")}: ${checkin}`);
-  lines.push(`${t("wa_checkout")}: ${checkout}`);
+  lines.push(`${t("wa_checkin")}: ${toDMY(checkin)}`);
+  lines.push(`${t("wa_checkout")}: ${toDMY(checkout)}`);
   lines.push(`${t("wa_guests")}: ${guests}`);
   if (room)     lines.push(`${t("wa_room")}: ${room}`);
   // PRECIO ESTIMADO DESACTIVADO (a pedido): descomentar para volver a incluirlo

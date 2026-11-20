@@ -444,6 +444,14 @@ function toDMY(s) {
   return `${d}/${m}/${y}`;
 }
 
+// Devuelve la URL de la página actual en otro idioma (es = raíz; en/pt = subcarpeta)
+function langUrl(lang) {
+  let p = location.pathname.replace(/^\/(en|pt)(\/|$)/, "/"); // saco el prefijo de idioma si lo hay
+  const base = lang === "es" ? "" : "/" + lang;
+  const target = p === "/" ? base + "/" : base + p;
+  return target + location.search + location.hash;
+}
+
 /* ---------- Construir y abrir WhatsApp ---------- */
 function openWhatsApp({ name, email, phone, country, checkin, checkout, guests, room, comments, price }) {
   const lines = [t("wa_greeting"), ""];
@@ -615,15 +623,13 @@ function updatePrice() {
 
 /* ---------- Inicialización ---------- */
 document.addEventListener("DOMContentLoaded", () => {
-  // Idioma guardado o del navegador
-  let saved;
-  try { saved = localStorage.getItem("azulmarino_lang"); } catch (e) {}
-  const browser = (navigator.language || "es").slice(0, 2);
-  applyLang(saved || (I18N[browser] ? browser : "es"));
+  // Idioma = el de la página (horneado en <html lang>); cada idioma tiene su URL
+  const pageLang = (document.documentElement.lang || "es").slice(0, 2);
+  applyLang(I18N[pageLang] ? pageLang : "es");
 
-  // Botones de idioma
+  // Botones de idioma -> navegan a la versión del sitio en ese idioma
   document.querySelectorAll(".lang-switch button").forEach((b) => {
-    b.addEventListener("click", () => applyLang(b.dataset.lang));
+    b.addEventListener("click", () => { location.href = langUrl(b.dataset.lang); });
   });
 
   // Header con scroll
@@ -706,7 +712,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const slug = new URLSearchParams(q).get("room");
     const room = ROOMS[slug];
     if (room && room.images.length) {
-      el.style.backgroundImage = `url('assets/habitaciones/${room.folder}/${room.images[0]}')`;
+      el.style.backgroundImage = `url('/assets/habitaciones/${room.folder}/${room.images[0]}')`;
       el.style.backgroundSize = "cover";
       el.style.backgroundPosition = "center";
       el.classList.remove("ph");
@@ -779,7 +785,7 @@ function initRoomPage() {
 
   if (!room) { location.href = "index.html#habitaciones"; return; }
 
-  const imgPath = (file) => `assets/habitaciones/${room.folder}/${file}`;
+  const imgPath = (file) => `/assets/habitaciones/${room.folder}/${file}`;
   let activeIdx = 0;
 
   // Render que se re-ejecuta al cambiar idioma

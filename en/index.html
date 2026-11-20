@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data:; connect-src 'self' https://docs.google.com https://*.googleusercontent.com; frame-src https://www.google.com https://maps.google.com; base-uri 'self'; form-action 'self'; object-src 'none'" />
+  <title>Azul Marino · Boutique Inn · José Ignacio, Uruguay</title>
+  <meta name="description" content="Azul Marino, boutique inn in José Ignacio. 12 exclusive suites where countryside, sand and sea meet. 400 m from the beach." />
+  <link rel="icon" href="../favicon.svg" type="image/svg+xml" />
+  <link rel="canonical" href="https://azulmarino.com.uy/en/" />
+  <link rel="alternate" hreflang="es" href="https://azulmarino.com.uy/" />
+  <link rel="alternate" hreflang="en" href="https://azulmarino.com.uy/en/" />
+  <link rel="alternate" hreflang="pt" href="https://azulmarino.com.uy/pt/" />
+  <link rel="alternate" hreflang="x-default" href="https://azulmarino.com.uy/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Azul Marino" />
+  <meta property="og:title" content="Azul Marino · Boutique Inn · José Ignacio, Uruguay" />
+  <meta property="og:description" content="Azul Marino, boutique inn in José Ignacio. 12 exclusive suites where countryside, sand and sea meet. 400 m from the beach." />
+  <meta property="og:image" content="https://azulmarino.com.uy/assets/hero.jpg" />
+  <meta property="og:locale" content="en_US" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Tipografías -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link rel="stylesheet" href="../styles.css" />
+</head>
+<body>
+
+  <!-- ============ HEADER / NAVEGACIÓN ============ -->
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#inicio" class="logo">
+        <img src="../assets/logo.png" alt="Azul Marino · Posada José Ignacio" class="logo-img" />
+        <span class="logo-text">
+          <span class="logo-mark">Azul Marino</span>
+          <span class="logo-sub" data-i18n="logo_sub">Inn · José Ignacio</span>
+        </span>
+      </a>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="#inicio" data-i18n="nav_home">Home</a>
+        <a href="#habitaciones" data-i18n="nav_rooms">Rooms</a>
+        <a href="jose-ignacio.html" data-i18n="nav_jose">José Ignacio</a>
+        <a href="#galeria" data-i18n="nav_gallery">Gallery</a>
+        <a href="#contacto" data-i18n="nav_contact">Contact</a>
+        <a href="#reservar" class="btn btn-nav" data-i18n="nav_book">Book now</a>
+      </nav>
+
+      <div class="header-right">
+        <div class="lang-switch" role="group" aria-label="Idioma">
+          <button data-lang="es" class="active">ES</button>
+          <button data-lang="en">EN</button>
+          <button data-lang="pt">PT</button>
+        </div>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menú">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="inicio">
+    <div class="hero-media ph" data-ph="Foto principal / panorámica de la posada">
+      <!-- Para poner tu foto: reemplazá el fondo de .hero-media en styles.css
+           por  background-image: url('assets/hero.jpg');  y quitá la clase "ph" de arriba -->
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <p class="hero-eyebrow" data-i18n="hero_eyebrow">José Ignacio · Uruguay</p>
+      <h1 class="hero-title" data-i18n="hero_title">Where the countryside, the sand and the sea meet</h1>
+      <p class="hero-text" data-i18n="hero_text">12 exclusive suites in a unique natural setting, 400 metres from the beach.</p>
+      <a href="#reservar" class="btn btn-primary btn-lg" data-i18n="hero_cta">Check availability</a>
+    </div>
+
+    <!-- Barra de reserva rápida -->
+    <div class="quickbook container">
+      <div class="qb-field">
+        <label data-i18n="qb_checkin">Check-in</label>
+        <input type="date" id="qbCheckin" />
+      </div>
+      <div class="qb-field">
+        <label data-i18n="qb_checkout">Check-out</label>
+        <input type="date" id="qbCheckout" />
+      </div>
+      <div class="qb-field">
+        <label data-i18n="qb_guests">Guests</label>
+        <select id="qbGuests">
+          <option value="1">1</option>
+          <option value="2" selected>2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+        </select>
+      </div>
+      <button class="btn btn-primary" id="qbSubmit" data-i18n="qb_submit">Check</button>
+    </div>
+  </section>
+
+  <!-- ============ INTRO / SOBRE LA POSADA ============ -->
+  <section class="intro section" id="posada">
+    <div class="container intro-grid">
+      <div class="intro-text">
+        <p class="eyebrow" data-i18n="intro_eyebrow">Our inn</p>
+        <h2 data-i18n="intro_title">Peace &amp; nature</h2>
+        <p data-i18n="intro_p1">Posada Azul Marino offers 12 exclusive suites within a beautiful natural area of José Ignacio, where countryside, sand and sea blend in a unique way. It sits just 400 m from the beach, 2 km from the village of José Ignacio and 5 km from Garzón lagoon.</p>
+        <p data-i18n="intro_p2">It is run by its own owners, so our guests enjoy their stay with the best local recommendations.</p>
+      </div>
+      <div class="intro-media ph" data-ph="Foto ambiente / exterior"></div>
+    </div>
+
+    <div class="container intro-grid intro-grid-2">
+      <div class="intro-media ph ph-gal3" data-ph="Foto salón"></div>
+      <div class="intro-text">
+        <p data-i18n="about2_p1">Every day we serve a continental breakfast with fruit, breads and fresh juices (gluten-free options).</p>
+        <p data-i18n="about2_p2">There is a main lounge with the reception, the bar and a living room with TV and a wood stove. We also offer a heated outdoor pool, bicycles and parking.</p>
+        <p class="accent-script" data-i18n="about2_highlight">We guarantee calm, privacy and comfort.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ POR QUÉ ELEGIRNOS ============ -->
+  <section class="reasons section alt">
+    <div class="container">
+      <p class="eyebrow center" data-i18n="reasons_eyebrow">Why Azul Marino</p>
+      <h2 class="center" data-i18n="reasons_title">Why choose Azul Marino?</h2>
+      <div class="reasons-grid">
+        <div class="reason">
+          <div class="reason-icon"><i class="fa-solid fa-bed"></i></div>
+          <h3 data-i18n="reason1_t">Comfort</h3>
+          <p data-i18n="reason1_p">12 rooms with private entrance (no need to pass through reception) and an exclusive terrace. Calm, privacy and comfort guaranteed.</p>
+        </div>
+        <div class="reason">
+          <div class="reason-icon"><i class="fa-solid fa-tree"></i></div>
+          <h3 data-i18n="reason2_t">Peace and nature</h3>
+          <p data-i18n="reason2_p">Pioneers in the area — the first inn in Arenas de José Ignacio. Run by its own owners.</p>
+        </div>
+        <div class="reason">
+          <div class="reason-icon"><i class="fa-solid fa-bell-concierge"></i></div>
+          <h3 data-i18n="reason3_t">Personalised service</h3>
+          <p data-i18n="reason3_p">Our attention to every detail makes your stay 100% comfortable. Advice and booking of restaurants, activities and tours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HABITACIONES ============ -->
+  <section class="rooms section" id="habitaciones">
+    <div class="container">
+      <p class="eyebrow center" data-i18n="rooms_eyebrow">Accommodation</p>
+      <h2 class="center" data-i18n="rooms_title">The rooms</h2>
+      <p class="section-lead center" data-i18n="rooms_lead">All rooms include continental breakfast, housekeeping and linens.</p>
+
+      <div class="rooms-grid">
+        <!-- Doble Jardín -->
+        <article class="room-card">
+          <a href="habitacion.html?room=doble-jardin" class="room-media ph ph-room1" data-ph="Foto: Doble Jardín" aria-label="Doble Jardín"></a>
+          <div class="room-body">
+            <h3><a href="habitacion.html?room=doble-jardin" data-i18n="room1_t">Garden Double</a></h3>
+            <p data-i18n="room1_p">A cosy suite with garden views and access. Ideal for a peaceful getaway.</p>
+            <ul class="room-amenities">
+              <li data-i18n="am_breakfast">Breakfast included</li>
+              <li data-i18n="am_terrace">Private terrace</li>
+              <li data-i18n="am_wifi">Free WiFi</li>
+            </ul>
+            <div class="room-actions">
+              <a href="habitacion.html?room=doble-jardin" class="btn btn-outline" data-i18n="room_view">View room</a>
+              <button class="btn btn-primary room-book" data-room="Doble Jardín" data-i18n="room_reserve">Book</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Doble Superior -->
+        <article class="room-card featured">
+          <a href="habitacion.html?room=doble-superior" class="room-media ph ph-room2" data-ph="Foto: Doble Superior" aria-label="Doble Superior"></a>
+          <div class="room-body">
+            <span class="room-tag" data-i18n="room_popular">Most popular</span>
+            <h3><a href="habitacion.html?room=doble-superior" data-i18n="room2_t">Superior Double</a></h3>
+            <p data-i18n="room2_p">More space and comfort, with a private terrace and bright ambience.</p>
+            <ul class="room-amenities">
+              <li data-i18n="am_breakfast">Breakfast included</li>
+              <li data-i18n="am_terrace">Private terrace</li>
+              <li data-i18n="am_space">More space</li>
+            </ul>
+            <div class="room-actions">
+              <a href="habitacion.html?room=doble-superior" class="btn btn-outline" data-i18n="room_view">View room</a>
+              <button class="btn btn-primary room-book" data-room="Doble Superior" data-i18n="room_reserve">Book</button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Doble Superior + Jacuzzi -->
+        <article class="room-card">
+          <a href="habitacion.html?room=doble-superior-jacuzzi" class="room-media ph ph-room3" data-ph="Foto: Doble Superior + Jacuzzi" aria-label="Doble Superior + Jacuzzi"></a>
+          <div class="room-body">
+            <h3><a href="habitacion.html?room=doble-superior-jacuzzi" data-i18n="room3_t">Superior Double + Jacuzzi</a></h3>
+            <p data-i18n="room3_p">Our most complete suite, with a private jacuzzi for a special experience.</p>
+            <ul class="room-amenities">
+              <li data-i18n="am_breakfast">Breakfast included</li>
+              <li data-i18n="am_jacuzzi">Private jacuzzi</li>
+              <li data-i18n="am_terrace">Private terrace</li>
+            </ul>
+            <div class="room-actions">
+              <a href="habitacion.html?room=doble-superior-jacuzzi" class="btn btn-outline" data-i18n="room_view">View room</a>
+              <button class="btn btn-primary room-book" data-room="Doble Superior + Jacuzzi" data-i18n="room_reserve">Book</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SERVICIOS ============ -->
+  <section class="services section alt" id="servicios">
+    <div class="container">
+      <p class="eyebrow center" data-i18n="services_eyebrow">Services</p>
+      <h2 class="center" data-i18n="services_title">Inn services</h2>
+      <p class="section-lead center" data-i18n="services_lead">For us, your comfort is our greatest pleasure.</p>
+
+      <div class="services-featured">
+        <article class="feat-card">
+          <div class="feat-media ph ph-desayuno" data-ph="Foto desayuno"></div>
+          <div class="feat-body">
+            <h3 data-i18n="srv_feat_breakfast_t">Breakfast included</h3>
+            <p data-i18n="srv_feat_breakfast_p">No need to head out for breakfast: it's included, at the bar or in your room at no charge.</p>
+          </div>
+        </article>
+        <article class="feat-card">
+          <div class="feat-media ph ph-gal2" data-ph="Foto bar"></div>
+          <div class="feat-body">
+            <h3 data-i18n="srv_feat_bar_t">Bar</h3>
+            <p data-i18n="srv_feat_bar_p">Nothing better than a bar just steps from your room. Cocktails, drinks and more.</p>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="services-plus accent-script center" data-i18n="services_plus">And more...</h3>
+      <div class="services-grid">
+        <div class="service"><span class="service-ic"><i class="fa-solid fa-wifi"></i></span><span data-i18n="srv_wifi">Free WiFi throughout the inn</span></div>
+        <div class="service"><span class="service-ic"><i class="fa-solid fa-bath"></i></span><span data-i18n="srv_towels">Towel service</span></div>
+        <div class="service"><span class="service-ic"><i class="fa-solid fa-chair"></i></span><span data-i18n="srv_chairs">Beach chairs</span></div>
+        <div class="service"><span class="service-ic"><i class="fa-solid fa-person-swimming"></i></span><span data-i18n="srv_pool">Open heated pool</span></div>
+        <div class="service"><span class="service-ic"><i class="fa-solid fa-fire"></i></span><span data-i18n="srv_lounge">Living room with bar, wood stove and TV</span></div>
+        <div class="service"><span class="service-ic"><i class="fa-solid fa-square-parking"></i></span><span data-i18n="srv_parking">Parking</span></div>
+        <div class="service"><span class="service-ic"><i class="fa-solid fa-umbrella-beach"></i></span><span data-i18n="srv_umbrellas">Beach umbrellas</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GALERÍA ============ -->
+  <section class="gallery section" id="galeria">
+    <div class="container">
+      <p class="eyebrow center" data-i18n="gallery_eyebrow">Gallery</p>
+      <h2 class="center" data-i18n="gallery_title">A glimpse of Azul Marino</h2>
+      <div class="gallery-grid">
+        <div class="gal-item ph ph-gal1" data-ph="Foto 1"></div>
+        <div class="gal-item ph ph-gal2" data-ph="Foto 2"></div>
+        <div class="gal-item ph ph-gal3" data-ph="Foto 3"></div>
+        <div class="gal-item ph ph-gal4" data-ph="Foto 4"></div>
+        <div class="gal-item ph ph-gal5" data-ph="Foto 5"></div>
+        <div class="gal-item ph ph-gal6" data-ph="Foto 6"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ RESERVAR ============ -->
+  <section class="book section alt" id="reservar">
+    <div class="container book-grid">
+      <div class="book-intro">
+        <p class="eyebrow" data-i18n="book_eyebrow">Book your stay</p>
+        <h2 data-i18n="book_title">Confirm your booking via WhatsApp</h2>
+        <p data-i18n="book_text">Fill in the form and we'll take you straight to WhatsApp with your request ready. We'll confirm availability and the best price shortly.</p>
+        <ul class="book-points">
+          <li data-i18n="book_p1">✓ Direct confirmation with the owners</li>
+          <li data-i18n="book_p2">✓ Best price guaranteed</li>
+          <li data-i18n="book_p3">✓ No online charges or payments</li>
+        </ul>
+      </div>
+
+      <form class="book-form" id="bookForm">
+        <div class="field">
+          <label for="bfName" data-i18n="f_name">Full name</label>
+          <input type="text" id="bfName" required />
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="bfEmail" data-i18n="f_email">Email</label>
+            <input type="email" id="bfEmail" required pattern="[^@\s]+@[^@\s]+\.[^@\s]+" data-i18n-title="email_title" title="Enter a valid email, e.g. name@domain.com" />
+          </div>
+          <div class="field">
+            <label for="bfPhone" data-i18n="f_phone">Phone</label>
+            <input type="tel" id="bfPhone" required />
+          </div>
+        </div>
+        <div class="field">
+          <label for="bfCountry" data-i18n="f_country">Country of residence</label>
+          <input type="text" id="bfCountry" required />
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="bfCheckin" data-i18n="qb_checkin">Check-in</label>
+            <input type="date" id="bfCheckin" required />
+          </div>
+          <div class="field">
+            <label for="bfCheckout" data-i18n="qb_checkout">Check-out</label>
+            <input type="date" id="bfCheckout" required />
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="bfGuests" data-i18n="qb_guests">Guests</label>
+            <select id="bfGuests">
+              <option value="1">1</option>
+              <option value="2" selected>2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="bfRoom" data-i18n="f_room">Room</label>
+            <select id="bfRoom">
+              <option data-i18n="f_room_any" value="Sin preferencia">No preference</option>
+              <option value="Doble Jardín">Doble Jardín</option>
+              <option value="Doble Superior">Doble Superior</option>
+              <option value="Doble Superior + Jacuzzi">Doble Superior + Jacuzzi</option>
+            </select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="bfMsg" data-i18n="f_msg">Comments (optional)</label>
+          <textarea id="bfMsg" rows="3"></textarea>
+        </div>
+        <p class="book-price" id="bfPrice"></p>
+        <button type="submit" class="btn btn-whatsapp btn-lg btn-block">
+          <span data-i18n="f_submit">Send via WhatsApp</span>
+        </button>
+      </form>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIOS ============ -->
+  <section class="testimonials section" id="testimonios">
+    <div class="container">
+      <p class="eyebrow center" data-i18n="testi_eyebrow">Testimonials</p>
+      <h2 class="center" data-i18n="testi_title">What our guests say</h2>
+      <div class="testi-grid">
+        <figure class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <blockquote class="testi-text">Todo 10 puntos. La ubicación, el entorno, la comodidad, el servicio. Muy recomendable.</blockquote>
+          <figcaption class="testi-author">César Gual Hernández</figcaption>
+        </figure>
+        <figure class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <blockquote class="testi-text">Excelente posada, en un lugar muy tranquilo y a dos minutos del centro de José Ignacio. La habitación muy cómoda, con una hermosa vista al bosque. La atención y el desayuno, excelentes.</blockquote>
+          <figcaption class="testi-author">Diego Carranza</figcaption>
+        </figure>
+        <figure class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <blockquote class="testi-text">Amei me hospedar aqui! Lugar que dá paz, é lindo e super charmoso. O café da manhã incluso faz total diferença!</blockquote>
+          <figcaption class="testi-author">Laura</figcaption>
+        </figure>
+        <figure class="testi-card">
+          <div class="testi-stars">★★★★★</div>
+          <blockquote class="testi-text">A wonderful stay in peaceful nature just outside José Ignacio. Spacious rooms, lovely private balconies and a relaxing pool. Highly recommended!</blockquote>
+          <figcaption class="testi-author">Stephen Da Costa</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACTO / UBICACIÓN ============ -->
+  <section class="contact section" id="contacto">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <p class="eyebrow" data-i18n="contact_eyebrow">Contact</p>
+        <h2 data-i18n="contact_title">We're here to help</h2>
+        <ul class="contact-list">
+          <li>
+            <span class="c-ic">📍</span>
+            <div>
+              <strong data-i18n="contact_addr_t">Address</strong>
+              <span>Calle La Farola, Ruta 10 km 185<br />José Ignacio, Maldonado, Uruguay</span>
+            </div>
+          </li>
+          <li>
+            <span class="c-ic">💬</span>
+            <div>
+              <strong>WhatsApp</strong>
+              <a href="https://wa.me/59898949309" target="_blank" rel="noopener">+598 98 94 93 09</a>
+            </div>
+          </li>
+          <li>
+            <span class="c-ic">📞</span>
+            <div>
+              <strong data-i18n="contact_phone_t">Phone</strong>
+              <a href="tel:+59844862364">+598 44 86 23 64</a>
+            </div>
+          </li>
+          <li>
+            <span class="c-ic">✉️</span>
+            <div>
+              <strong>Email</strong>
+              <a href="mailto:posada@azulmarino.com.uy">posada@azulmarino.com.uy</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="contact-map">
+        <iframe
+          title="Mapa Azul Marino"
+          src="https://www.google.com/maps?q=Posada+Azul+Marino,+Jos%C3%A9+Ignacio,+Uruguay&output=embed"
+          width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="logo-mark">Azul Marino</span>
+        <p data-i18n="footer_tag">Boutique inn in José Ignacio, Uruguay.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#habitaciones" data-i18n="nav_rooms">Rooms</a>
+        <a href="jose-ignacio.html" data-i18n="nav_jose">José Ignacio</a>
+        <a href="#galeria" data-i18n="nav_gallery">Gallery</a>
+        <a href="#contacto" data-i18n="nav_contact">Contact</a>
+        <a href="politicas.html" data-i18n="nav_rates">Rates &amp; policies</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© <span id="year"></span> Azul Marino · José Ignacio</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Botón flotante de WhatsApp -->
+  <a href="https://wa.me/59898949309" class="whatsapp-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <svg viewBox="0 0 32 32" width="30" height="30" fill="currentColor"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.1 1.6 5.9L4 29l8.3-1.6c1.7.9 3.7 1.4 5.7 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm0 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-4.9 1 1-4.8-.2-.4c-1-1.6-1.5-3.4-1.5-5.3C5 9.5 9.9 4.6 16 4.6S27 9.5 27 15.6 22.1 24.8 16 24.8zm6-8.2c-.3-.2-1.9-1-2.2-1.1-.3-.1-.5-.2-.7.2s-.8 1.1-1 1.3c-.2.2-.4.2-.7.1-.3-.2-1.4-.5-2.6-1.6-1-.9-1.6-1.9-1.8-2.3-.2-.3 0-.5.1-.7.1-.1.3-.4.4-.5.1-.2.2-.3.3-.5.1-.2 0-.4 0-.5-.1-.2-.7-1.7-1-2.3-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.2.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.9-.8 2.1-1.5.3-.7.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
+  </a>
+
+  <script src="../config.js"></script>
+  <script src="../script.js"></script>
+</body>
+</html>
